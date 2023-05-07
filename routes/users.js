@@ -4,7 +4,7 @@ const passport = require("passport");
 console.log("Router loaded");
 
 const userController = require("../controllers/users_controller");
-router.get("/profile", userController.profile);
+router.get("/profile", passport.checkAuthentication, userController.profile); //a user should not be able to view profile page before signed in
 router.get("/sign-up", userController.signUp);
 router.get("/sign-in", userController.signIn);
 
