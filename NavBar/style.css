@@ -1,0 +1,151 @@
+@font-face {
+    font-family: "Poppins";
+    src: url(/Poppins/Poppins-Italic.ttf);
+}
+
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Audiowide","Poppins",sans-serif;
+    font-size: 15px;
+    color: skyblue;
+}
+
+img
+{
+    max-width: 50px;
+    max-height: 50px;
+}
+
+body
+{
+    background: teal;
+}
+
+header
+{
+    width: 80%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    background: #0b2239;
+    border-radius: 0 0 10px 10px;
+    margin: 0 auto;
+}
+
+.logo
+{
+    width: 120px;
+    margin-top: 8px;
+}
+
+nav .logo
+{
+    display: none;
+}
+
+nav ul
+{
+    display: flex;
+}
+
+nav ul li a
+{
+    display: block;
+    margin: 0 2px;
+    padding: 8px 18px;
+    transition: 0.2s;
+    border-radius: 30px;
+}
+
+nav ul li a:hover
+{
+    background: #676767;
+}
+nav ul li a.active
+{
+    background: #676767;
+}
+
+.hamburger
+{
+    display: none;
+    height: fit-content;
+    cursor:pointer;
+    padding: 3px 8px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+.hamburger:hover
+{
+    background: #676767;
+}
+
+.hamburger div
+{
+    width: 30px;
+    height: 2px;
+    margin: 6px 0;
+    background: skyblue;
+}
+
+@media only screen and (max-width:1100px){
+    header
+    {
+        width:90%;
+        padding: 0 20px; 
+    }
+    nav
+    {
+        position: absolute;
+        left:-300px;
+        transition: 0.5s;
+        top:0;
+        z-index:999;
+        width: 280px;
+        height: 100vh;
+        background-color: #0b2239;
+        box-shadow:2px 0 2px 0 rgba(0,0,0,0.5);
+    }
+
+    #nav_check:checked ~ nav
+    {
+        left:0;
+        transition: 0.5s;
+    }
+
+    nav .logo
+    {
+        display: block;
+        height: 70px;
+        display:flex;
+        align-items: center;
+        margin-left: 30px;
+    }
+
+    nav ul li a
+    {
+        margin-bottom: 5px;
+        padding: 10px 15px;
+        border-radius: 5px;
+    }
+
+    nav ul
+    {
+        display: block;
+        padding: 0 20px;
+        margin-top: 30px;
+    }
+
+    .hamburger
+    {
+        display: block;
+    }
+}
