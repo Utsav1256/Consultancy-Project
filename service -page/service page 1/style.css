@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #111;
+  color: #fff;
+}
+.service {
+  padding: 130px;
+}
+.max-width {
+  max-width: 1300px;
+  padding: 0 45px;
+  margin: auto;
+}
+.max-width h1 {
+  text-align: center;
+  position: relative;
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 60px;
+  padding-bottom: 20px;
+}
+.max-width h1::after {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 3px;
+  background: #fff;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.content {
+  /*  it is covering all the cards */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.card {
+  padding: 50px 25px;
+  width: calc(26% - 20px);
+  border-radius: 6px;
+  background: #222;
+  /* text-align: center; */
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.3 ease;
+  display: flex;
+  flex-direction: column;
+  flex: wrap;
+  box-shadow: 0px 10px 20px rgba(211, 210, 210, 0.2);
+}
+.content .card:hover {
+  background-color: #dc143c;
+}
+.content .card .box {
+  transition: all 0.3 ease;
+}
+.card:hover .box {
+  transform: scale(1.05);
+}
+.box i {
+  font-size: 50px;
+  color: #dc143c;
+  transition: color 0.3s ease;
+}
+.card:hover .box i {
+  color: #fff;
+}
+.box h3 {
+  font-size: 25px;
+  padding: 10px 0 7px;
+}
+@media screen and (max-width: 1990px) {
+  .max-width {
+    padding: 0 25px;
+  }
+  .card {
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .card {
+    width: 100%;
+  }
+}
