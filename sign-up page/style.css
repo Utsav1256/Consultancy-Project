@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0b0b0c;
+  color: #fff;
+  padding: 0 20px;
+}
+.container {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  background: #dc143c;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(237, 234, 234, 0.2);
+}
+.container header {
+  font-size: 1.5rem;
+  color: #f4feff;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.form .input-box {
+  width: 100px;
+  margin-top: 20px;
+}
+.form .input-box {
+  color: #fff;
+}
+.input-box input {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: rgb(78, 56, 243);
+  border: 1px solid rgb(221, 232, 232);
+  border-radius: 6px;
+  padding: 0 15px;
+  margin-top: 8px;
+  font-weight: bold;
+}
+.column {
+  display: flex;
+  column-gap: 16px;
+}
+.gender-box {
+  margin-top: 20px;
+}
+.gender-box h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.gender-option {
+  display: flex;
+  /* align-items: center;   */
+  column-gap: 50px;
+  /* cursor: pointer; */
+  flex-wrap: wrap;
+}
+.gender :where(input, label) {
+  cursor: pointer;
+}
+.address input {
+  margin-top: 15px;
+}
+
+.select-box select {
+  margin-top: 15px;
+}
+.select-box select {
+  padding: 0 15px;
+  font-weight: bold;
+  height: 50px;
+  width: 275px;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+  color: #707070;
+  font-size: 1rem;
+}
+.container .submit {
+  text-align: center;
+}
+button {
+  height: 55px;
+  width: 80%;
+  text-align: center;
+  margin-top: 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: rgb(19, 180, 180);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+button:hover {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: aqua;
+  background-color: #f9103f;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 500px) {
+  .column {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .gender-option {
+    row-gap: 6px;
+  }
+}
