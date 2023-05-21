@@ -5,6 +5,9 @@
     <%- style %>
   </head>
   <body>
-    <%- include('_header')%> <%- body %> <%- include('_footer')%> <%- script %>
+    <div class="header"><%- include('_header')%></div>
+    <div class="variable"><%- body %></div>
+    <div class="footer"><%- include('_footer')%></div>
+    <%- script %>
   </body>
 </html>

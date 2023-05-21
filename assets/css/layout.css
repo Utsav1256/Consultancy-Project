@@ -1,3 +1,9 @@
 body {
   margin: 0;
+  background-color: #0b0b0c;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
