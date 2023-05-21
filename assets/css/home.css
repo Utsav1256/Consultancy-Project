@@ -34,18 +34,18 @@
 .about {
   padding: 80px 0;
   text-align: center;
-  background-color: #fff;
+  background-color: #080505;
 }
 
 .about h2 {
   font-size: 2.5rem;
-  color: #333;
+  color: #fff7f7;
   margin-bottom: 30px;
 }
 
 .about p {
   font-size: 1.2rem;
-  color: #777;
+  color: #fff;
   margin-bottom: 30px;
 }
 
@@ -95,7 +95,7 @@
   transition: all 0.3 ease;
   display: flex;
   flex-direction: column;
-  flex: wrap;
+  /* flex: wrap; */
   box-shadow: 0px 10px 20px rgba(211, 210, 210, 0.2);
   text-align: center;
 }
