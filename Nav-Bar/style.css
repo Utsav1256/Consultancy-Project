@@ -24,9 +24,17 @@ header {
   /* background: #000; */
   z-index: 1;
 }
-header .sticky {
+header.sticky {
   padding: 5px 50px;
-  background: #eceaea;
+  background: #fff;
+  color: #000;
+}
+
+header.sticky .logo {
+  color: #000;
+}
+header.sticky ul li a {
+  color: #000;
 }
 header .logo {
   position: relative;
