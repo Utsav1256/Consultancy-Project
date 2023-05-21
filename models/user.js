@@ -11,12 +11,32 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    first_name: {
+    service: {
       type: String,
       required: true,
     },
-    last_name: {
+    name: {
       type: String,
+      required: true,
+    },
+    phone_number: {
+      type: Number,
+      required: true,
+    },
+    gender: {
+      type: String,
+      required: true,
+    },
+    country: {
+      type: String,
+      required: true,
+    },
+    city: {
+      type: String,
+      required: true,
+    },
+    postal_code: {
+      type: Number,
       required: true,
     },
   },
