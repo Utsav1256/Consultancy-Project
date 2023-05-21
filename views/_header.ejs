@@ -1,11 +1,34 @@
 <ul>
   <% if(locals.user) {%>
-  <li>
+  <!-- <li>
     <a href="/users/profile"><%= user.first_name %> <%= user.last_name %></a>
   </li>
   <li>
     <a href="/users/sign-out">Sign Out</a>
-  </li>
+  </li> -->
+  <link rel="stylesheet" href="/css/_header.css" />
+  <nav>
+    <div class="logo">
+      <a href="#" class="logo">Gliadalista Consultancy</a>
+    </div>
+    <ul>
+      <li>
+        <a href="#">Home</a>
+      </li>
+      <li>
+        <a href="#">AboutUs</a>
+      </li>
+      <li>
+        <a href="#">Industries</a>
+      </li>
+      <li>
+        <a href="#">Services</a>
+      </li>
+      <li>
+        <a href="#">Contacts</a>
+      </li>
+    </ul>
+  </nav>
   <% }else {%>
   <!-- <li>
     <a href="/users/sign-in">Sign In</a>
