@@ -1,11 +1,9 @@
-/* Reset default styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Basic styles */
 body {
   background-color: #111;
   color: #fff;
@@ -17,7 +15,6 @@ body {
   padding: 0 20px;
 }
 
-/* Navigation */
 nav {
   background-color: #f8f8f8;
   padding: 10px;
@@ -72,7 +69,7 @@ nav {
   margin-bottom: 30px;
 }
 
-.cta {
+.std {
   display: inline-block;
   padding: 10px 30px;
   background-color: #333;
@@ -82,7 +79,7 @@ nav {
   transition: background-color 0.3s ease;
 }
 
-.cta:hover {
+.std:hover {
   background-color: #555;
 }
 

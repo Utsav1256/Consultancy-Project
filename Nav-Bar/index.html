@@ -16,29 +16,27 @@
         <li>
           <a href="#">Home</a>
         </li>
-      </ul>
-      <ul>
         <li>
           <a href="#">AboutUs</a>
         </li>
-      </ul>
-      <ul>
         <li>
           <a href="#">Industries</a>
         </li>
-      </ul>
-      <ul>
         <li>
           <a href="#">Services</a>
         </li>
-      </ul>
-
-      <ul>
         <li>
           <a href="#">Contacts</a>
         </li>
       </ul>
-      <section class="banner"></section>
     </header>
+    <section class="banner"></section>
+
+    <script type="text/javascript">
+      window.addEventListener("scroll", function () {
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+      });
+    </script>
   </body>
 </html>
