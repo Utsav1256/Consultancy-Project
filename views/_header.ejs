@@ -29,6 +29,12 @@
       </li>
     </ul>
   </nav>
+  <script type="text/javascript">
+    window.addEventListener("scroll", function () {
+      var nav = document.querySelector("header");
+      nav.classList.toggle("sticky", window.scrollY > 0);
+    });
+  </script>
   <% }else {%>
   <!-- <li>
     <a href="/users/sign-in">Sign In</a>
@@ -60,5 +66,11 @@
       </li>
     </ul>
   </nav>
+  <script type="text/javascript">
+    window.addEventListener("scroll", function () {
+      var nav = document.querySelector("header");
+      nav.classList.toggle("sticky", window.scrollY > 0);
+    });
+  </script>
   <% } %>
 </ul>
