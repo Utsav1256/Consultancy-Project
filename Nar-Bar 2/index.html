@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Menu</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header id="header">
+      <a href="" class="logo">Gliadalista Consultancy</a>
+      <div id="toggle"></div>
+      <div class="navbar" id="navbar">
+        <ul>
+          <li>
+            <a href="#home">Home</a>
+          </li>
+          <li>
+            <a href="#AboutUs">AboutUs</a>
+          </li>
+          <li>
+            <a href="#Industries">Industries</a>
+          </li>
+          <li>
+            <a href="#Services">Services</a>
+          </li>
+          <li>
+            <a href="#Contacts">Contacts</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <section id="home">Home</section>
+    <section id="AboutUs">AboutUs</section>
+    <section id="Industries">Industries</section>
+    <section id="Services">Services</section>
+    <section id="Contacts">Contacts</section>
+
+    <script>
+      const header = document.getElementById("header");
+      const toggle = document.getElementById("toggle");
+      const navbar = document.getElementById("navbar");
+
+      document.onclick = function (e) {
+        if (
+          e.target.id !== "header" &&
+          e.target.id !== "toggle" &&
+          e.target.id !== "toggle"
+        ) {
+          toggle.classList.remove("active");
+          navbar.classList.remove("active");
+        }
+      };
+
+      toggle.onclick = function () {
+        toggle.classList.toggle("active");
+        navbar.classList.toggle("active");
+      };
+    </script>
+  </body>
+</html>

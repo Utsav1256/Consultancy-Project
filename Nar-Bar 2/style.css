@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300;1,400&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000;
+  min-height: 200vh;
+  overflow: hidden;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-shadow: o 5px 25px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+.logo {
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: 0.6s;
+  height: 60px;
+  line-height: 60px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+}
+#toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background-color: #000000;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: 0.2s;
+}
+#toggle::before,
+#toggle::after {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 2px;
+  background: #fff;
+  transition: transform 0.2s;
+}
+#toggle::before {
+  transform: translateY(-5px);
+}
+#toggle::after {
+  transform: translateY(5px);
+}
+#toggle.active::before {
+  transform: translateY(0px) rotate(45deg);
+}
+#toggle.active::after {
+  transform: translateY(0px) rotate(-45deg);
+  color: #000000;
+}
+#toggle.active {
+  background: #db2929;
+}
+.navbar {
+  position: relative;
+  height: 100%;
+  right: 60px;
+  background: #000000;
+  transition: 0.5s;
+  width: 0;
+  overflow: hidden;
+}
+#navbar.active {
+  width: 620px;
+}
+.navbar ul {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+.navbar ul li {
+  /* position: relative; */
+  list-style: none;
+}
+.navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+  line-height: 60px;
+  display: inline-block;
+  font-size: 1.2rem;
+  padding: 0 15px;
+  letter-spacing: 2px;
+}
+.navbar ul li a:hover {
+  color: #ffbd59;
+  /* font-weight: bolder; */
+  font-size: 1.3rem;
+  /* background: #8c52ff; */
+  border-radius: 10px;
+}
+section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #fff;
+  font-size: 18vh;
+  /* font-weight: 700; */
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .navbar {
+    position: fixed;
+    bottom: -100%;
+    right: 0;
+    width: 100%;
+    transition: 0.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);
+    flex-direction: column;
+  }
+  .navbar.active {
+    height: calc(100vh - 60px);
+    bottom: 0;
+  }
+  .navbar {
+  }
+}
