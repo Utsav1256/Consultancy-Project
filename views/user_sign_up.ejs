@@ -14,13 +14,14 @@
 </form> -->
 <link rel="stylesheet" href="/css/user_sign_up.css" />
 <section class="container">
-  <form action="#">
+  <form action="/users/create" method="post">
     <h1>Registration</h1>
 
     <div class="input-box">
       <label for="name">Full Name</label>
       <input
         type="text"
+        name="name"
         id="name"
         placeholder="Enter your full name"
         required
@@ -28,21 +29,28 @@
     </div>
     <div class="input-box">
       <label for="email">Email</label>
-      <input type="email" id="email" placeholder="Enter your email" required />
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Enter your email"
+        required
+      />
     </div>
     <div class="column">
       <div class="input-box">
-        <label for="phone-num">Phone Number</label>
+        <label for="phone_number">Phone Number</label>
         <input
-          type=""
-          id="phone-num"
+          type="number"
+          name="phone_number"
+          id="date_of_birth"
           placeholder="Enter your phone number"
           required
         />
       </div>
       <div class="input-box">
-        <label for="date">Date Of Birth</label>
-        <input type="date" id="date" required />
+        <label for="date_of_birth">Date Of Birth</label>
+        <input type="date" name="date_of_birth" id="date_of_birth" required />
       </div>
     </div>
     <div class="gender-box">
@@ -65,7 +73,7 @@
     <div class="address input-box">
       <div class="column">
         <div class="select-box">
-          <select name="contry_selected">
+          <select name="country">
             <option hidden>Country</option>
             <option value="India">India</option>
             <option value="America">America</option>
@@ -73,18 +81,40 @@
             <option value="Canada">Canada</option>
           </select>
         </div>
-        <input type="text" id="" placeholder="Enter Postal Code " required />
+        <input
+          type="number"
+          name="postal_code"
+          id=""
+          placeholder="Enter Postal Code "
+          required
+        />
       </div>
-      <input type="text" id="" placeholder="Enter your city" required />
-      <div class="select-box full">
-        <select name="Service_selected">
-          <option hidden>Service want to avail</option>
-          <option value="Consultancy">Consultancy</option>
-          <option value="Training">Training</option>
-          <option value="CorporateGuide">Corporate Guide</option>
-          <option value="Guidance">Guidance</option>
-        </select>
-      </div>
+      <input
+        type="text"
+        name="city"
+        id=""
+        placeholder="Enter your city"
+        required
+      />
+    </div>
+
+    <div class="select-box full">
+      <select name="Service_selected">
+        <option hidden>Service want to avail</option>
+        <option value="Consultancy">Consultancy</option>
+        <option value="Training">Training</option>
+        <option value="CorporateGuide">Corporate Guide</option>
+        <option value="Guidance">Guidance</option>
+      </select>
+    </div>
+    <div class="column input-box">
+      <input type="password" name="password" placeholder="password" required />
+      <input
+        type="password"
+        name="confirm_password"
+        placeholder="Confirm Password"
+        required
+      />
     </div>
     <div class="submit">
       <button>Submit</button>

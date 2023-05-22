@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    service: {
+    Service_selected: {
       type: String,
       required: true,
     },
@@ -21,6 +21,10 @@ const userSchema = new mongoose.Schema(
     },
     phone_number: {
       type: Number,
+      required: true,
+    },
+    date_of_birth: {
+      type: Date,
       required: true,
     },
     gender: {
