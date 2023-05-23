@@ -4,10 +4,10 @@
   height: 100vh;
   background-size: cover;
 } */
-.welcome {
+/* .welcome {
   text-align: center;
   padding: 100px 0;
-  /* background-color: #f2f2f2; */
+  background-color: #f2f2f2;
 }
 
 .welcome h1 {
@@ -20,7 +20,7 @@
   font-size: 1.2rem;
   color: #e6e212;
   margin-bottom: 30px;
-}
+} */
 
 .std {
   display: inline-block;
