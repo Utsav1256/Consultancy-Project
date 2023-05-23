@@ -24,7 +24,7 @@ header {
   box-shadow: o 5px 25px rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
-.logo {
+/* .logo span {
   font-weight: 700;
   color: #fff;
   text-decoration: none;
@@ -33,13 +33,40 @@ header {
   letter-spacing: 2px;
   transition: 0.6s;
   height: 60px;
-  line-height: 60px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-left: 10px;
+} */
+.logo a {
+  /* font-family: Arial, sans-serif; */
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  transition: 0.6s;
+  height: 60px;
+  cursor: pointer;
   padding-left: 20px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.logo h3 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.logo span {
+  color: #dc143c;
+}
+
 #toggle {
   position: absolute;
   top: 0;
@@ -127,7 +154,7 @@ section {
 }
 
 /* Responsive */
-@media (max-width: 991px) {
+@media (max-width: 1019.2px) {
   .navbar {
     position: fixed;
     bottom: -100%;
@@ -137,13 +164,18 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 80px);
     flex-direction: column;
   }
-  .navbar.active {
+  #navbar.active {
     height: calc(100vh - 60px);
     bottom: 0;
+    width: 100%;
   }
-  .navbar {
+  .navbar ul {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* width: 100%; */
   }
 }
