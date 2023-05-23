@@ -132,11 +132,12 @@
   font-size: 25px;
   padding: 10px 0 7px;
 }
-form {
+.btn {
   text-align: center;
   padding-top: 30px;
 }
-button {
+button,
+button a {
   height: 55px;
   width: 80%;
   text-align: center;
@@ -147,8 +148,12 @@ button {
   background-color: rgb(19, 180, 180);
   transition: all 0.2s ease;
   cursor: pointer;
+  text-decoration: none;
+  color: #000000;
+  letter-spacing: 2px;
 }
-button:hover {
+button:hover,
+button:hover a {
   font-size: 1.2rem;
   font-weight: bold;
   color: aqua;

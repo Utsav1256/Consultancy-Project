@@ -7,7 +7,7 @@ header {
   width: 100%;
   background: #000000;
   box-shadow: o 5px 25px rgba(0, 0, 0, 0.5);
-  z-index: 1000;
+  z-index: 1;
 }
 /* .logo span {
   font-weight: 700;
@@ -101,7 +101,7 @@ header {
   overflow: hidden;
 }
 #navbar.active {
-  width: 620px;
+  width: 690px;
 }
 .navbar ul {
   position: relative;
