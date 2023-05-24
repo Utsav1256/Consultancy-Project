@@ -168,8 +168,62 @@ button:hover a {
     margin-bottom: 20px;
   }
 }
+/*
 @media screen and (max-width: 600px) {
+  .banner {
+    position: relative;
+    background: url(../images/ConsultancyBanner2-mobile.png);
+    height: 100vh;
+    background-size: cover;
+  }
   .card {
     width: 100%;
+  }
+} */
+
+@media (max-width: 768px) {
+  /* Styles for tablets and smaller devices */
+  .banner {
+    height: 100vh;
+    background: url(../images/ConsultancyBanner2-mobile.png);
+    background-size: cover;
+  }
+
+  .services {
+    padding: 50px;
+    height: 100vh;
+  }
+
+  .max-width h1 {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  .card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Styles for mobile devices */
+  .banner {
+    height: 100vh;
+    background: url(../images/ConsultancyBanner2-mobile.png);
+    background-size: cover;
+  }
+
+  .services {
+    padding: 30px;
+  }
+
+  .max-width h1 {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  .card {
+    width: 100%;
+    margin-bottom: 20px;
   }
 }
