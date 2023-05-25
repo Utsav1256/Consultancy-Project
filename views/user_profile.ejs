@@ -1,8 +1,10 @@
 <link rel="stylesheet" href="/css/user_profile.css" />
-<h1>Profile Page</h1>
-<p>Name: <%= user.first_name %> <%= user.last_name %></p>
-<p>Email: <%= user.email %></p>
+<div class="profile container">
+  <h1>Profile Page</h1>
+  <p>Name: <%= user.first_name %> <%= user.last_name %></p>
+  <p>Email: <%= user.email %></p>
 
-<form action="/users/sign-out" method="post">
-  <input type="submit" value="Sign Out" />
-</form>
+  <form action="/users/sign-out" method="post">
+    <input type="submit" value="Sign Out" />
+  </form>
+</div>

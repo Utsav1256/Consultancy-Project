@@ -1,4 +1,4 @@
-body {
-    background-color: E76161;
-    color: rgb(0, 85, 255);
+.profile.container {
+  margin-top: 80px;
+  height: 100vh;
 }

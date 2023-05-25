@@ -43,28 +43,29 @@
 }
 
 /* About section */
-.about {
+.home.about {
   padding: 80px 0;
   text-align: center;
   background-color: #000000;
 }
 
-.about h2 {
+.home.about h2 {
   font-size: 2.5rem;
   color: #8c52ff;
   margin-bottom: 30px;
 }
 
-.about p {
+.home.about p {
   font-size: 1.2rem;
   color: #ffbd59;
   margin-bottom: 30px;
 }
 
 /* Services section */
-.services {
+.home.services {
   padding: 100px;
   /* margin: 0 40px; */
+  height: auto;
 }
 .max-width {
   max-width: 1300px;
@@ -183,15 +184,15 @@ button:hover a {
 
 @media (max-width: 768px) {
   /* Styles for tablets and smaller devices */
-  .banner {
+  .home.banner {
     height: 100vh;
     background: url(../images/ConsultancyBanner2-mobile.png);
     background-size: cover;
   }
 
-  .services {
+  .home.services {
     padding: 50px;
-    height: 100vh;
+    height: auto;
   }
 
   .max-width h1 {
@@ -213,8 +214,9 @@ button:hover a {
     background-size: cover;
   }
 
-  .services {
+  .home.services {
     padding: 30px;
+    height: auto;
   }
 
   .max-width h1 {
