@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/css/user_profile.css" />
-<div class="profile container">
+<!-- <div class="profile container">
   <h1>Profile Page</h1>
   <p>Name: <%= user.first_name %> <%= user.last_name %></p>
   <p>Email: <%= user.email %></p>
@@ -7,4 +7,15 @@
   <form action="/users/sign-out" method="post">
     <input type="submit" value="Sign Out" />
   </form>
+</div> -->
+<div class="profile container">
+  <section class="profile-section">
+    <div class="profile-image">
+      <img src="profile.jpg" alt="Profile Image" />
+    </div>
+    <div class="profile-info">
+      <h1><%= user.name %></h1>
+      <p>Email: <%= user.email %></p>
+    </div>
+  </section>
 </div>
