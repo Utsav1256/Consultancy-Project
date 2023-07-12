@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema(
     },
     Service_selected: {
       type: String,
-      required: true,
+      required: false,
     },
     name: {
       type: String,
@@ -21,27 +21,27 @@ const userSchema = new mongoose.Schema(
     },
     phone_number: {
       type: Number,
-      required: true,
+      required: false,
     },
     date_of_birth: {
       type: Date,
-      required: true,
+      required: false,
     },
     gender: {
       type: String,
-      required: true,
+      required: false,
     },
     country: {
       type: String,
-      required: true,
+      required: false,
     },
     city: {
       type: String,
-      required: true,
+      required: false,
     },
     postal_code: {
       type: Number,
-      required: true,
+      required: false,
     },
   },
   {

@@ -41,7 +41,7 @@
       <div class="input-box">
         <label for="phone_number">Phone Number</label>
         <input
-          type="number"
+          type="tel"
           name="phone_number"
           id="date_of_birth"
           placeholder="Enter your phone number"
@@ -82,20 +82,13 @@
           </select>
         </div>
         <input
-          type="number"
+          type="text"
           name="postal_code"
           id=""
           placeholder="Enter Postal Code "
-          required
         />
       </div>
-      <input
-        type="text"
-        name="city"
-        id=""
-        placeholder="Enter your city"
-        required
-      />
+      <input type="text" name="city" id="" placeholder="Enter your city" />
     </div>
 
     <div class="select-box full">
@@ -120,4 +113,7 @@
       <button>Submit</button>
     </div>
   </form>
+  <p>
+    <a href="/users/auth/google">Google SignIn</a>
+  </p>
 </section>

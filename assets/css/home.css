@@ -59,6 +59,7 @@
   font-size: 1.2rem;
   color: #ffbd59;
   margin-bottom: 30px;
+  padding: 20px;
 }
 
 /* Services section */
@@ -72,7 +73,7 @@
   padding: 0 45px;
   margin: auto;
 }
-.max-width h1 {
+.max-width h2 {
   text-align: center;
   position: relative;
   font-size: 40px;
@@ -80,7 +81,7 @@
   margin-bottom: 60px;
   padding-bottom: 20px;
 }
-.max-width h1::after {
+.max-width h2::after {
   content: "";
   position: absolute;
   width: 170px;
