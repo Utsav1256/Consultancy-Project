@@ -137,6 +137,8 @@
 .btn {
   text-align: center;
   padding-top: 30px;
+  /* display: flex;
+  justify-content: space-between; */
 }
 button,
 button a {
@@ -161,6 +163,7 @@ button:hover a {
   color: aqua;
   background-color: #f9103f;
 }
+
 @media screen and (max-width: 1990px) {
   .max-width {
     padding: 0 25px;

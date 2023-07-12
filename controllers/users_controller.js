@@ -17,6 +17,18 @@ module.exports.signUp = function (req, res) {
   });
 };
 
+// render the payment page
+module.exports.register = function (req, res) {
+  if (req.isAuthenticated()) {
+    // return res.redirect("/users/register");
+    return res.render("user_register", {
+      title: "Registration",
+    });
+  }
+  return res.render("user_sign_up", {
+    title: "Sign Up",
+  });
+};
 // render the sign in page
 module.exports.signIn = function (req, res) {
   if (req.isAuthenticated()) {

@@ -1,0 +1,119 @@
+<!-- <h1>Sign Up</h1>
+<form action="/users/create" method="post">
+  <input type="text" name="first_name" placeholder="First Name" required />
+  <input type="text" name="last_name" placeholder="Last Name" required />
+  <input type="email" name="email" placeholder="Your Email" required />
+  <input type="password" name="password" placeholder="password" required />
+  <input
+    type="password"
+    name="confirm_password"
+    placeholder="Confirm Password"
+    required
+  />
+  <input type="submit" value="Sign Up" />
+</form> -->
+<link rel="stylesheet" href="/css/user_register.css" />
+<section class="signup container">
+  <form action="/users/register" method="post">
+    <h1>Registration</h1>
+
+    <div class="input-box">
+      <label for="name">Full Name</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Enter your full name"
+        required
+      />
+    </div>
+    <div class="input-box">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Enter your email"
+        required
+      />
+    </div>
+    <div class="column">
+      <div class="input-box">
+        <label for="phone_number">Phone Number</label>
+        <input
+          type="tel"
+          name="phone_number"
+          id="date_of_birth"
+          placeholder="Enter your phone number"
+          required
+        />
+      </div>
+      <div class="input-box">
+        <label for="date_of_birth">Date Of Birth</label>
+        <input type="date" name="date_of_birth" id="date_of_birth" required />
+      </div>
+    </div>
+    <div class="gender-box">
+      <h3>Gender</h3>
+      <div class="gender-option">
+        <div class="gender">
+          <input type="radio" name="gender" value="Male" id="male" />
+          <label for="male">Male</label>
+        </div>
+        <div class="gender">
+          <input type="radio" name="gender" id="female" />
+          <label for="female">Female</label>
+        </div>
+        <div class="gender">
+          <input type="radio" name="gender" id="prefer not to say" />
+          <label for="prefer not to say">Prefer not to say</label>
+        </div>
+      </div>
+    </div>
+    <div class="address input-box">
+      <div class="column">
+        <div class="select-box">
+          <select name="country">
+            <option hidden>Country</option>
+            <option value="India">India</option>
+            <option value="America">America</option>
+            <option value="Germany">Germany</option>
+            <option value="Canada">Canada</option>
+          </select>
+        </div>
+        <input
+          type="text"
+          name="postal_code"
+          id=""
+          placeholder="Enter Postal Code "
+        />
+      </div>
+      <input type="text" name="city" id="" placeholder="Enter your city" />
+    </div>
+
+    <div class="select-box full">
+      <select name="Service_selected">
+        <option hidden>Service want to avail</option>
+        <option value="Consultancy">Consultancy</option>
+        <option value="Training">Training</option>
+        <option value="CorporateGuide">Corporate Guide</option>
+        <option value="Guidance">Guidance</option>
+      </select>
+    </div>
+    <div class="column input-box">
+      <input type="password" name="password" placeholder="password" required />
+      <input
+        type="password"
+        name="confirm_password"
+        placeholder="Confirm Password"
+        required
+      />
+    </div>
+    <div class="submit">
+      <button>Submit</button>
+    </div>
+  </form>
+  <p>
+    <a href="/users/auth/google">Google SignIn</a>
+  </p>
+</section>

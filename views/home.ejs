@@ -100,7 +100,12 @@
       </div>
     </div>
     <div class="btn">
-      <button><a href="/users/sign-up"> SignUp to Avail </a></button>
+      <% if(locals.user) {%>
+      <button><a href="/users/register">Register to Avail</a></button>
+      <%}else {%>
+      <button><a href="/users/register">Register to Avail</a></button>
+      <button><a href="/users/sign-up"> SignUp / SignIn </a></button>
+      <%}%>
     </div>
   </div>
 </section>
