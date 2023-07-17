@@ -29,9 +29,7 @@ passport.use(
             });
           }
         })
-        .then((user) => {
-          return done(null, user);
-        })
+
         .catch((err) => {
           console.log("error in google strategy-passport", err);
           return done(err);
