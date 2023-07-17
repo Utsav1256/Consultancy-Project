@@ -2,9 +2,35 @@ const User = require("../models/user");
 
 // render the profile  page
 module.exports.profile = function (req, res) {
-  return res.render("user_profile", {
-    title: "User Profile",
-  });
+  // return res.render("user_profile", {
+  //   title: "User Profile",
+  // });
+  User.findById(req.params.id)
+    .then((user) => {
+      return res.render("user_profile", {
+        title: "Profile Page",
+        profile_user: user,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  //    function (err, user) {
+  //   return res.render("users_profile", {
+  //     title: "Profile Page",
+  //     profile_user: user,
+  //   });
+  // });
+};
+module.exports.update = function (req, res) {
+  if (req.user.id == req.params.id) {
+    User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
+      //  req.body -> {name: req.body.name, email: req,body.email}
+      return res.redirect("back");
+    });
+  } else {
+    return res.status(401).send("Unauthorized");
+  }
 };
 
 // render the sign up page

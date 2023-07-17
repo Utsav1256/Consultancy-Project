@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
-
+const multer = require("multer"); // mports the Multer package which is used for handling file uploads.
+const path = require("path"); //  imports the Node.js path module which provides utilities for working with file and directory paths.
+const AVATAR_PATH = path.join("/uploads/users/avatars");
 const userSchema = new mongoose.Schema(
   {
     email: {

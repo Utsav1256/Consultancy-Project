@@ -2,3 +2,9 @@
   margin-top: 70px;
   height: 100vh;
 }
+p {
+  margin-top: 10px;
+}
+p a {
+  color: #fff;
+}

@@ -1,21 +1,114 @@
 <link rel="stylesheet" href="/css/user_profile.css" />
-<!-- <div class="profile container">
-  <h1>Profile Page</h1>
-  <p>Name: <%= user.first_name %> <%= user.last_name %></p>
-  <p>Email: <%= user.email %></p>
 
-  <form action="/users/sign-out" method="post">
-    <input type="submit" value="Sign Out" />
-  </form>
-</div> -->
 <div class="profile container">
   <section class="profile-section">
-    <div class="profile-image">
+    <!-- <div class="profile-image">
       <img src="profile.jpg" alt="Profile Image" />
-    </div>
+    </div> -->
     <div class="profile-info">
-      <h1><%= user.name %></h1>
-      <p>Email: <%= user.email %></p>
+      <h1>Personal Info</h1>
+      <% if (user.id == profile_user.id) { %>
+      <form action="/users/update/<%= user.id %>" enctype="mul" method="post">
+        <div class="input-box">
+          <h2>Full Name</h2>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            value="<%= profile_user.name %>"
+            required
+          />
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <h2>Birthday</h2>
+            <input
+              type="date"
+              name="date_of_birth"
+              placeholder="Date of Birth"
+              value="<%= profile_user.date_of_birth ? profile_user.date_of_birth.toISOString().split('T')[0] : '' %>"
+              required
+            />
+          </div>
+          <div class="input-box right-col">
+            <h2>Gender</h2>
+            <input
+              type="text"
+              name="gender"
+              placeholder=""
+              value="<%= profile_user.gender %>"
+              required
+              readonly
+            />
+          </div>
+        </div>
+        <div class="column">
+          <div class="input-box">
+            <h2>Email</h2>
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              value="<%= profile_user.email %>"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <h2>Mobile No.</h2>
+            <input
+              type="tel"
+              name="phone_number"
+              placeholder="Your Mobile No."
+              value="<%= profile_user.phone_number %>"
+              required
+            />
+          </div>
+        </div>
+        <div class="column">
+          <div class="input-box">
+            <h2>Country</h2>
+            <input
+              type="country"
+              name="country"
+              placeholder=""
+              value="<%= profile_user.country %>"
+              required
+              readonly
+            />
+          </div>
+          <div class="input-box">
+            <h2>Postal Code</h2>
+            <input
+              type="postal_code"
+              name="postal_code"
+              placeholder=""
+              value="<%= profile_user.postal_code %>"
+              required
+              readonly
+            />
+          </div>
+        </div>
+        <div class="input-box">
+          <h2>City</h2>
+          <input
+            type="text"
+            name="city"
+            placeholder=""
+            value="<%= profile_user.city %>"
+            required
+            readonly
+          />
+        </div>
+        <div class="submit">
+          <input type="submit" value="Update" />
+        </div>
+      </form>
+
+      <% } else { %>
+      <h1>Name : <%= profile_user.name %></h1>
+      <p>Email : <%= profile_user.email %></p>
+      <%}%>
     </div>
   </section>
 </div>
