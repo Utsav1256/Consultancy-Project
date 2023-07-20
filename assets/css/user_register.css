@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 
-.signup.container {
+.register.container {
   position: relative;
   max-width: 700px;
   width: 100%;
@@ -10,7 +10,7 @@
   box-shadow: 0 0 15px rgba(237, 234, 234, 0.2);
   margin: 80px;
 }
-.signup.container h1 {
+.register.container h1 {
   font-size: 1.5rem;
   color: #f4feff;
   font-weight: 700;
@@ -75,6 +75,7 @@
   color: #707070;
   font-size: 1rem;
 }
+
 .full select {
   width: 100%;
 }
@@ -87,7 +88,9 @@ select option:checked {
   background-color: #333;
   color: #fff;
 }
-
+.select-box select option {
+  height: 20px; /* Adjust the height as needed */
+}
 .container .submit {
   text-align: center;
 }
@@ -112,6 +115,9 @@ button:hover {
 
 /* Responsiveness */
 @media screen and (max-width: 500px) {
+  .register.container {
+    width: 70%;
+  }
   .column {
     flex-wrap: wrap;
     width: 100%;

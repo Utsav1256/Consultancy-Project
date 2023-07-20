@@ -25,6 +25,7 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
+  background-color: #fff;
 }
 
 .profile-info {
@@ -61,4 +62,74 @@
   padding: 0 15px;
   margin-top: 8px;
   font-weight: bold;
+}
+
+.submit {
+  text-align: center;
+}
+.submit input {
+  height: 50px;
+  width: 70%;
+  text-align: center;
+  margin-top: 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: rgb(209, 115, 16);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.submit input:hover {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgb(209, 115, 16);
+  background-color: #ffffff;
+}
+
+@media screen and (max-width: 600px) {
+  .profile-section {
+    padding: 10px;
+    border-radius: 20px;
+    width: 70%;
+  }
+
+  .profile-info h1 {
+    font-size: 20px;
+  }
+
+  .input-box input,
+  .submit input {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profile-section {
+    padding: 5px;
+    gap: 10px;
+    width: 60%;
+  }
+
+  .profile-image img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile-info h1 {
+    font-size: 18px;
+  }
+
+  .profile-info p {
+    font-size: 14px;
+  }
+
+  .input-box input {
+    height: 40px;
+    font-size: 0.8rem;
+  }
+
+  .submit input {
+    height: 40px;
+    font-size: 0.9rem;
+  }
 }

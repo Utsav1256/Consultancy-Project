@@ -36,10 +36,9 @@
             <input
               type="text"
               name="gender"
-              placeholder=""
+              placeholder="Male / Female / Other"
               value="<%= profile_user.gender %>"
               required
-              readonly
             />
           </div>
         </div>
@@ -74,7 +73,6 @@
               placeholder=""
               value="<%= profile_user.country %>"
               required
-              readonly
             />
           </div>
           <div class="input-box">
@@ -85,7 +83,6 @@
               placeholder=""
               value="<%= profile_user.postal_code %>"
               required
-              readonly
             />
           </div>
         </div>
@@ -94,12 +91,12 @@
           <input
             type="text"
             name="city"
-            placeholder=""
+            placeholder="Enter your city"
             value="<%= profile_user.city %>"
             required
-            readonly
           />
         </div>
+
         <div class="submit">
           <input type="submit" value="Update" />
         </div>

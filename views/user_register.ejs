@@ -13,8 +13,8 @@
   <input type="submit" value="Sign Up" />
 </form> -->
 <link rel="stylesheet" href="/css/user_register.css" />
-<section class="signup container">
-  <form action="/users/register" method="post">
+<section class="register container">
+  <form action="/users/register/<%= user.id %>" method="post">
     <h1>Registration</h1>
 
     <div class="input-box">
@@ -24,6 +24,7 @@
         name="name"
         id="name"
         placeholder="Enter your full name"
+        value="<%= profile_user.name %>"
         required
       />
     </div>
@@ -34,6 +35,7 @@
         name="email"
         id="email"
         placeholder="Enter your email"
+        value="<%= profile_user.email %>"
         required
       />
     </div>
@@ -45,6 +47,7 @@
           name="phone_number"
           id="date_of_birth"
           placeholder="Enter your phone number"
+          value="<%= profile_user.date_of_birth ? profile_user.date_of_birth.toISOString().split('T')[0] : '' %>"
           required
         />
       </div>
@@ -57,7 +60,7 @@
       <h3>Gender</h3>
       <div class="gender-option">
         <div class="gender">
-          <input type="radio" name="gender" value="Male" id="male" />
+          <input type="radio" name="gender" value="Male" id="male" checked />
           <label for="male">Male</label>
         </div>
         <div class="gender">
@@ -74,7 +77,7 @@
       <div class="column">
         <div class="select-box">
           <select name="country">
-            <option hidden>Country</option>
+            <option hidden><%= profile_user.country %></option>
             <option value="India">India</option>
             <option value="America">America</option>
             <option value="Germany">Germany</option>
@@ -86,34 +89,46 @@
           name="postal_code"
           id=""
           placeholder="Enter Postal Code "
+          value="<%= profile_user.postal_code %>"
         />
       </div>
-      <input type="text" name="city" id="" placeholder="Enter your city" />
+      <input
+        type="text"
+        name="city"
+        id=""
+        placeholder="Enter your city"
+        value="<%= profile_user.city %>"
+      />
     </div>
 
     <div class="select-box full">
       <select name="Service_selected">
         <option hidden>Service want to avail</option>
-        <option value="Consultancy">Consultancy</option>
-        <option value="Training">Training</option>
-        <option value="CorporateGuide">Corporate Guide</option>
-        <option value="Guidance">Guidance</option>
+        <optgroup label="Consultancy">
+          <option value="Service1">Service 1</option>
+          <option value="Service2">Service 2</option>
+          <option value="Service3">Service 3</option>
+        </optgroup>
+        <optgroup label="Training">
+          <option value="Training1">Training 1</option>
+          <option value="Training2">Training 2</option>
+          <option value="Training3">Training 3</option>
+        </optgroup>
+        <optgroup label="Corporate Guide">
+          <option value="Guide1">Guide 1</option>
+          <option value="Guide2">Guide 2</option>
+          <option value="Guide3">Guide 3</option>
+        </optgroup>
+        <optgroup label="Guidance">
+          <option value="Guidance1">Guidance 1</option>
+          <option value="Guidance2">Guidance 2</option>
+          <option value="Guidance3">Guidance 3</option>
+        </optgroup>
       </select>
     </div>
-    <div class="column input-box">
-      <input type="password" name="password" placeholder="password" required />
-      <input
-        type="password"
-        name="confirm_password"
-        placeholder="Confirm Password"
-        required
-      />
-    </div>
+
     <div class="submit">
       <button>Submit</button>
     </div>
   </form>
-  <p>
-    <a href="/users/auth/google">Google SignIn</a>
-  </p>
 </section>

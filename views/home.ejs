@@ -101,10 +101,14 @@
     </div>
     <div class="btn">
       <% if(locals.user) {%>
-      <button><a href="/users/register">Register to Avail</a></button>
+      <button>
+        <a href="/users/register/<%= user.id %>">Register to Avail</a>
+      </button>
       <%}else {%>
-      <button><a href="/users/register">Register to Avail</a></button>
-      <button><a href="/users/sign-up"> SignUp / SignIn </a></button>
+      <button>
+        <a href="/users/sign-in">Register to Avail</a>
+      </button>
+      <button><a href="/users/sign-in"> SignUp / SignIn </a></button>
       <%}%>
     </div>
   </div>
