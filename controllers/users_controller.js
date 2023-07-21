@@ -30,6 +30,12 @@ module.exports.update = async function (req, res) {
 
         user.name = req.body.name;
         user.email = req.body.email;
+        user.date_of_birth = req.body.date_of_birth;
+        user.gender = req.body.emagenderil;
+        user.phone_number = req.body.phone_number;
+        user.country = req.body.country;
+        user.postal_code = req.body.postal_code;
+        user.city = req.body.city;
 
         if (req.file) {
           if (user.avatar) {
@@ -41,6 +47,7 @@ module.exports.update = async function (req, res) {
           user.avatar = User.avatarPath + "/" + req.file.filename;
         }
         user.save();
+        req.flash("success", "Profile Updated Successfully");
         return res.redirect("back");
       });
     } else {
@@ -104,6 +111,7 @@ module.exports.create = async function (req, res) {
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
       await User.create(req.body);
+      req.flash("success", "Signed Up Successfully");
       return res.redirect("/users/sign-in");
     } else {
       return res.redirect("back");
@@ -116,6 +124,7 @@ module.exports.create = async function (req, res) {
 
 // Create a session for user login
 module.exports.createSession = function (req, res) {
+  req.flash("success", "Logged in Successfully");
   return res.redirect("/");
 };
 
@@ -125,6 +134,9 @@ module.exports.destroySession = function (req, res, next) {
     if (err) {
       return next(err);
     }
+
+    req.flash("success", "You have loggged out!");
+
     return res.redirect("/");
   });
 };

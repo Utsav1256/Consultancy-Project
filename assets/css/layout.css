@@ -17,3 +17,6 @@ body {
   align-items: center;
   height: auto;
 }
+.alert {
+  color: red;
+}
