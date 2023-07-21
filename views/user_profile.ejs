@@ -8,7 +8,16 @@
     <div class="profile-info">
       <h1>Personal Info</h1>
       <% if (user.id == profile_user.id) { %>
-      <form action="/users/update/<%= user.id %>" enctype="mul" method="post">
+      <form
+        action="/users/update/<%= user.id %>"
+        enctype="multipart/form-data"
+        method="post"
+      >
+        <div class="profile-image">
+          <img src="<%= user.avatar %>" alt="<%= user.name %>" width="100" />
+          <input type="file" name="avatar" accept="image/*" />
+        </div>
+
         <div class="input-box">
           <h2>Full Name</h2>
           <input

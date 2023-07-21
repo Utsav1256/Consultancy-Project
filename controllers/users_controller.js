@@ -1,4 +1,6 @@
 const User = require("../models/user");
+const fs = require("fs");
+const path = require("path");
 
 // render the profile  page
 module.exports.profile = function (req, res) {
@@ -22,22 +24,44 @@ module.exports.profile = function (req, res) {
   //   });
   // });
 };
-module.exports.update = function (req, res) {
+module.exports.update = async function (req, res) {
   if (req.user.id == req.params.id) {
-    // User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
-    //   //  req.body -> {name: req.body.name, email: req,body.email}
-    //   return res.redirect("back");
-    // });
-    User.findByIdAndUpdate(req.params.id, req.body)
-      .then((user) => {
-        // req.body -> {name: req.body.name, email: req.body.email}
+    //  checks if the user who made the request matches the user ID in the URL.
+    try {
+      let user = await User.findById(req.params.id); // tries to find the user by the ID passed in the URL
+      User.uploadedAvatar(req, res, function (err) {
+        // console.log(req);
+
+        if (err) {
+          console.log("****** Multer Error: ", err);
+        }
+        // console.log(req.file);
+        user.name = req.body.name;
+        user.email = req.body.email;
+
+        if (req.file) {
+          // checks if a file has been uploaded as part of the request.
+          if (user.avatar) {
+            // checks if the user already has an avatar by verifying if the avatar field of the user model is not null.
+            const avatarPath = path.join(__dirname, "..", user.avatar); // creates the path of the existing avatar file by joining the current directory (__dirname), the parent directory (..) and the avatar field of the user model.
+            if (fs.existsSync(avatarPath)) {
+              // checks if the avatar file exists in the file system by calling the fs.existsSync() method with the avatarPath variable.
+              // the avatar path exists, you can safely delete it
+              fs.unlinkSync(avatarPath); // deletes the existing avatar file synchronously using the fs.unlinkSync() method.
+            }
+          }
+          // this is saving the path of the uploaded file into the avatar field
+          user.avatar = User.avatarPath + "/" + req.file.filename;
+        }
+        user.save();
         return res.redirect("back");
-      })
-      .catch((err) => {
-        console.log(err);
-        return res.status(500).send("Internal Server Error");
       });
+    } catch (err) {
+      req.flash("error", err);
+      return res.redirect("back");
+    }
   } else {
+    req.flash("error", "Unauthorized!");
     return res.status(401).send("Unauthorized");
   }
 };

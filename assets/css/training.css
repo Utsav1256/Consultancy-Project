@@ -1,0 +1,120 @@
+.points h3 {
+  padding: 80px;
+}
+
+.points {
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(9, 1fr);
+  width: 95%;
+  margin: 30px;
+}
+
+.first {
+  grid-template-rows: repeat(8, 1fr);
+}
+
+.indi {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.conbox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-auto-flow: column;
+}
+
+.detailbox:hover {
+  transform: scale(110%);
+  transition: 0.5s;
+}
+
+.detailbox:hover,
+.detailbox:hover p,
+.detailbox:hover h1 {
+  color: rgb(250, 118, 2);
+}
+
+.detailbox:hover p {
+  font-size: 120%;
+}
+
+.detailbox:hover h1 {
+  transition: 0.3s;
+  font-size: 1.3em;
+}
+
+.detailbox {
+  background-color: #222;
+  padding: 30px;
+  border-radius: 30px;
+  transition: 0.3s;
+  padding-left: 30px;
+  transform: scale(100%);
+  box-shadow: 50px white;
+  justify-self: center;
+  align-items: center;
+}
+
+img {
+  height: 500px;
+  width: 500px;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  padding: 10px;
+}
+
+p {
+  font-size: 100%;
+  color: orange;
+}
+
+.rightconbox {
+  border-top-right-radius: 1000px;
+  border-bottom-right-radius: 100px;
+  padding-right: 150px;
+  text-align: left;
+}
+
+.rightconbox p {
+  text-align: justify;
+}
+
+.rightconbox:hover {
+  transform: translateX(10%);
+  padding-right: 150px;
+}
+
+.leftconbox {
+  border-top-left-radius: 1000px;
+  border-bottom-left-radius: 100px;
+  padding-left: 150px;
+  text-align: right;
+}
+
+.leftconbox p {
+  text-align: justify;
+}
+
+.leftconbox:hover {
+  transform: translateX(-10%);
+  padding-left: 150px;
+}
+
+.choose h1 {
+  color: white;
+}
+
+.choose {
+  justify-content: center;
+  align-self: start;
+  padding: 50px;
+}
+
+.here {
+  align-self: end;
+}
