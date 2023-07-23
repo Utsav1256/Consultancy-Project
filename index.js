@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
 const port = 8001;
 const mongoose = require("mongoose");
 const expressLayouts = require("express-ejs-layouts");
@@ -16,6 +17,11 @@ const customMiddleware = require("./config/middleware");
 
 app.use(express.urlencoded());
 app.use(cookieParser());
+
+app.use(bodyParser.json());
+
+// Parse incoming requests with URL-encoded payloads
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static("./assets"));
 // make the uploads path available to the browser

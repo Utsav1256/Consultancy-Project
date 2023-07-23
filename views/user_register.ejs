@@ -1,20 +1,8 @@
-<!-- <h1>Sign Up</h1>
-<form action="/users/create" method="post">
-  <input type="text" name="first_name" placeholder="First Name" required />
-  <input type="text" name="last_name" placeholder="Last Name" required />
-  <input type="email" name="email" placeholder="Your Email" required />
-  <input type="password" name="password" placeholder="password" required />
-  <input
-    type="password"
-    name="confirm_password"
-    placeholder="Confirm Password"
-    required
-  />
-  <input type="submit" value="Sign Up" />
-</form> -->
 <link rel="stylesheet" href="/css/user_register.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <section class="register container">
-  <form action="/users/register/<%= user.id %>" method="post">
+  <form action="/payments/checkout/<%= user.id %>" method="post">
     <h1>Registration</h1>
 
     <div class="input-box">
@@ -47,13 +35,19 @@
           name="phone_number"
           id="date_of_birth"
           placeholder="Enter your phone number"
-          value="<%= profile_user.date_of_birth ? profile_user.date_of_birth.toISOString().split('T')[0] : '' %>"
+          value="<%= profile_user.phone_number %>"
           required
         />
       </div>
       <div class="input-box">
         <label for="date_of_birth">Date Of Birth</label>
-        <input type="date" name="date_of_birth" id="date_of_birth" required />
+        <input
+          type="date"
+          name="date_of_birth"
+          id="date_of_birth"
+          value="<%= profile_user.date_of_birth ? profile_user.date_of_birth.toISOString().split('T')[0] : '' %>"
+          required
+        />
       </div>
     </div>
     <div class="gender-box">
@@ -101,34 +95,38 @@
       />
     </div>
 
-    <div class="select-box full">
-      <select name="Service_selected">
-        <option hidden>Service want to avail</option>
-        <optgroup label="Consultancy">
-          <option value="Service1">Service 1</option>
-          <option value="Service2">Service 2</option>
-          <option value="Service3">Service 3</option>
-        </optgroup>
-        <optgroup label="Training">
-          <option value="Training1">Training 1</option>
-          <option value="Training2">Training 2</option>
-          <option value="Training3">Training 3</option>
-        </optgroup>
-        <optgroup label="Corporate Guide">
-          <option value="Guide1">Guide 1</option>
-          <option value="Guide2">Guide 2</option>
-          <option value="Guide3">Guide 3</option>
-        </optgroup>
-        <optgroup label="Guidance">
-          <option value="Guidance1">Guidance 1</option>
-          <option value="Guidance2">Guidance 2</option>
-          <option value="Guidance3">Guidance 3</option>
-        </optgroup>
-      </select>
+    <div class="column">
+      <div class="select-box full">
+        <select name="Service_selected">
+          <option hidden>Service want to avail</option>
+          <optgroup label="Consultancy">
+            <option value="Service1">Service 1</option>
+            <option value="Service2">Service 2</option>
+            <option value="Service3">Service 3</option>
+          </optgroup>
+          <optgroup label="Training">
+            <option value="Training1">Training 1</option>
+            <option value="Training2">Training 2</option>
+            <option value="Training3">Training 3</option>
+          </optgroup>
+          <optgroup label="Corporate Guide">
+            <option value="Guide1">Guide 1</option>
+            <option value="Guide2">Guide 2</option>
+            <option value="Guide3">Guide 3</option>
+          </optgroup>
+          <optgroup label="Guidance">
+            <option value="Guidance1">Guidance 1</option>
+            <option value="Guidance2">Guidance 2</option>
+            <option value="Guidance3">Guidance 3</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="price input-box">
+        <input type="number" id="price" name="price" required />
+      </div>
     </div>
-
     <div class="submit">
-      <button>Submit</button>
+      <button id="rzp-button1">Pay</button>
     </div>
   </form>
 </section>
