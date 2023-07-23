@@ -48,9 +48,15 @@ const renderCheckoutPage = async function (req, res) {
   try {
     console.log("HIII");
     const user = await User.findById(req.params.id);
+    const selectedService = req.query.service_selected;
+    const price = req.query.price;
+
+    console.log(selectedService);
     return res.render("checkout", {
       title: "Checkout Page",
       profile_user: user,
+      selected_service: selectedService,
+      price: price,
     });
   } catch (err) {
     console.log(err);

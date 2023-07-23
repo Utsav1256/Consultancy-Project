@@ -2,7 +2,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <section class="register container">
-  <form action="/payments/checkout/<%= user.id %>" method="post">
+  <form id="paymentForm" method="post">
     <h1>Registration</h1>
 
     <div class="input-box">
@@ -97,7 +97,7 @@
 
     <div class="column">
       <div class="select-box full">
-        <select name="Service_selected">
+        <select name="Service_selected" id="serviceSelectedField">
           <option hidden>Service want to avail</option>
           <optgroup label="Consultancy">
             <option value="Service1">Service 1</option>
@@ -122,11 +122,31 @@
         </select>
       </div>
       <div class="price input-box">
-        <input type="number" id="price" name="price" required />
+        <input type="number" id="priceField" name="price" required />
       </div>
     </div>
     <div class="submit">
-      <button id="rzp-button1">Pay</button>
+      <button id="rzp-button1">Submit</button>
     </div>
   </form>
 </section>
+<script>
+  document
+    .getElementById("rzp-button1")
+    .addEventListener("click", function (event) {
+      event.preventDefault();
+
+      // Get the selected service and price values
+      const selectedService = document.getElementById(
+        "serviceSelectedField"
+      ).value;
+      const price = document.getElementById("priceField").value;
+
+      // Set the action URL of the form with the selected values
+      const form = document.getElementById("paymentForm");
+      form.action = `/payments/checkout/<%= user.id %>?service_selected=${selectedService}&price=${price}`;
+
+      // Submit the form
+      form.submit();
+    });
+</script>

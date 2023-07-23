@@ -1,7 +1,15 @@
-.container {
-  max-width: 800px;
-  margin: 0 auto;
+/* checkout.css */
+
+/* Container styles */
+.container.checkout {
+  max-width: 600px;
+  margin-top: 80px;
+
   padding: 20px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  background-color: #000000;
+  height: 100vh;
 }
 
 h1 {
@@ -9,60 +17,68 @@ h1 {
   margin-bottom: 20px;
 }
 
-h2 {
-  margin-bottom: 10px;
-}
-
-form {
-  border: 1px solid #ccc;
-  padding: 20px;
-  border-radius: 5px;
-}
-
-.input-box {
+/* User details styles */
+.user-details {
   margin-bottom: 20px;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
+.user-details p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #fff;
+}
+.user-details p span {
+  margin: 10px 0;
+  font-size: 16px;
+  color: orange;
+}
+
+/* Service and Price styles */
+.service-info {
+  margin-bottom: 20px;
+}
+
+.service-info p {
+  margin: 10px 0;
+  font-size: 18px;
   font-weight: bold;
+  color: #fff;
 }
 
-input[type="text"],
-input[type="email"],
-textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.service-info p span {
+  color: cyan;
 }
 
-textarea {
-  resize: vertical;
+/* Terms and conditions checkbox styles */
+.terms-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.submit {
+#terms {
+  margin-right: 10px;
+}
+
+/* Payment button styles */
+.container .submit {
   text-align: center;
 }
-
 button {
-  padding: 10px 20px;
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
+  height: 55px;
+  width: 80%;
+  text-align: center;
+  margin-top: 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: rgb(19, 180, 180);
+  transition: all 0.2s ease;
   cursor: pointer;
-  font-size: 16px;
 }
-
 button:hover {
-  background-color: #2181bf;
-}
-
-/* Responsive styles */
-@media screen and (max-width: 480px) {
-  form {
-    padding: 10px;
-  }
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: aqua;
+  background-color: #f9103f;
 }

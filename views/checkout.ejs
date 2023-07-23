@@ -1,19 +1,25 @@
-<link rel="stylesheet" href="/css/user_register.css" />
+<link rel="stylesheet" href="/css/checkout.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<section class="register container">
-  <form action="/payments/checkout/<%= profile_user._id %>" method="post">
-    <h1><%= title %></h1>
+<section class="checkout container">
+  <h1>Checkout Page</h1>
 
-    <!-- Display selected service name, course description, and price -->
-    <div class="service-info">
-      <h2>Selected service:</h2>
-      <p>Name: <%= profile_user.Service_selected %></p>
+  <form action="/payments/checkout/<%= profile_user._id %>" method="post">
+    <div class="user-details">
+      <p>User Name : <span><%= profile_user.name %></span></p>
+      <p>User Name : <span><%= profile_user.email %></span></p>
     </div>
 
-    <!-- Rest of the form fields for user details -->
-    <!-- ... -->
+    <div class="service-info">
+      <p>Service selected : <span><%= selected_service %></span></p>
+      <p>Price : <span><%= price %></span></p>
+    </div>
+
+    <div class="terms-checkbox">
+      <input type="checkbox" id="terms" name="terms" required />
+      <label for="terms">I agree to the terms and conditions</label>
+    </div>
 
     <!-- Payment button -->
     <div class="submit">
@@ -68,6 +74,14 @@
   // };
 
   async function handleClick() {
+    // Check if the checkbox is checked
+    const termsCheckbox = document.getElementById("terms");
+    if (!termsCheckbox.checked) {
+      alert(
+        "Please agree to the terms and conditions before making the payment."
+      );
+      return;
+    }
     // create api integration
     let orderId = "GC" + Math.floor(Math.random() * Math.floor(Date.now()));
 
