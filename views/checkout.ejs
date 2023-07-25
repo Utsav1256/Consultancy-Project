@@ -2,32 +2,33 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<section class="checkout container">
-  <h1>Checkout Page</h1>
+<div class="checkout-body">
+  <section class="checkout container">
+    <h1>Checkout</h1>
 
-  <form action="/payments/checkout/<%= profile_user._id %>" method="post">
-    <div class="user-details">
-      <p>User Name : <span><%= profile_user.name %></span></p>
-      <p>User Name : <span><%= profile_user.email %></span></p>
-    </div>
+    <form action="/payments/checkout/<%= profile_user._id %>" method="post">
+      <div class="user-details">
+        <p>User Name : <span><%= profile_user.name %></span></p>
+        <p>User Name : <span><%= profile_user.email %></span></p>
+      </div>
 
-    <div class="service-info">
-      <p>Service selected : <span><%= selected_service %></span></p>
-      <p>Price : <span><%= price %></span></p>
-    </div>
+      <div class="service-info">
+        <p>Service selected : <span><%= selected_service %></span></p>
+        <p>Price : <span><%= price %></span></p>
+      </div>
 
-    <div class="terms-checkbox">
-      <input type="checkbox" id="terms" name="terms" required />
-      <label for="terms">I agree to the terms and conditions</label>
-    </div>
+      <div class="terms-checkbox">
+        <input type="checkbox" id="terms" name="terms" required />
+        <label for="terms">I agree to the terms and conditions</label>
+      </div>
 
-    <!-- Payment button -->
-    <div class="submit">
-      <button id="rzp-button1">Pay</button>
-    </div>
-  </form>
-</section>
-
+      <!-- Payment button -->
+      <div class="submit">
+        <button id="rzp-button1">Pay</button>
+      </div>
+    </form>
+  </section>
+</div>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
   // import axios from "axios";
@@ -94,7 +95,7 @@
     }
     let paymentRes = {
       order_id: orderId,
-      amount: "100",
+      amount: "<%= price %>",
       currency: "INR",
       payment_capture: 1,
     };
@@ -104,6 +105,7 @@
       "http://localhost:8001/payments/create",
       paymentRes
     );
+    console.log("----result->", result);
 
     // call card-detail api from backend
     if (!result.data.data) {
@@ -117,16 +119,19 @@
         name: "Gliadalista Consulting",
         description: "Test Transection",
         image: "image.png ",
-        order_id: result.data.id,
+        order_id: result.data.data.id,
         handler: async function (response) {
           // const result = await GetOrderDetails.getPAymentOrderList(
           //   response.razorpay.payment_id
           // );
-          const result = await axios.post(
-            "http://localhost:8001/payments/create",
-            response.razorpay.payment_id
+          console.log("---response--->", response);
+
+          const result2 = await axios.post(
+            "http://localhost:8001/payments/verify",
+            response
           );
           console.log("--result-->", result);
+          console.log("--result-->", result2);
           // if (result) {
           //   const finalList = {
           //     orderId: orderId,
@@ -142,9 +147,9 @@
         },
 
         prefill: {
-          name: "Gaurav Kumar",
-          email: "gaurav.kumar@example.com",
-          contact: "9000090000",
+          name: "<%= profile_user.name %>",
+          email: "<%= profile_user.email %>",
+          contact: "<%= profile_user.phone_number %>",
         },
         notes: {
           address: "Razorpay Corporate Office",

@@ -43,7 +43,11 @@
 // };
 const User = require("../models/user");
 const Razorpay = require("razorpay");
-
+const crypto = require("crypto");
+const razorpayInstance = new Razorpay({
+  key_id: "rzp_test_t5oFDruF5oObDd",
+  key_secret: "hUKKobvCPfMAva91M4gEAETA",
+});
 const renderCheckoutPage = async function (req, res) {
   try {
     console.log("HIII");
@@ -66,10 +70,6 @@ const renderCheckoutPage = async function (req, res) {
 
 const createOrder = async (req, res, next) => {
   try {
-    const razorpayInstance = new Razorpay({
-      key_id: "rzp_test_t5oFDruF5oObDd",
-      key_secret: "hUKKobvCPfMAva91M4gEAETA",
-    });
     const { order_id, amount, payment_capture, currency } = req.body;
     console.log(req.body);
     const options = {
@@ -106,4 +106,26 @@ const cardDetail = async (req, res, next) => {
   }
 };
 
-module.exports = { renderCheckoutPage, createOrder, cardDetail };
+const verify = (req, res) => {
+  console.log("req.body", req.body);
+  console.log("req.body.razorpay_order_id", req.body.razorpay_order_id);
+  console.log("req.body.razorpay_payment_id", req.body.razorpay_payment_id);
+  console.log("expectedSignature :", expectedSignature);
+  console.log("req.body.razorpay_signature", req.body.razorpay_signature);
+
+  let body = req.body.razorpay_order_id + "|" + req.body.razorpay_payment_id;
+  var expectedSignature = crypto
+    .createHmac("sha256", razorpayInstance.key_secret)
+    .update(body.toString())
+    .digest("hex");
+  console.log("expectedSignature :", expectedSignature);
+
+  if (expectedSignature === req.body.razorpay_signature) {
+    res.send({ code: 200, message: "Signature Valid" });
+    res.render()
+  } else {
+    res.send({ code: 500, message: "Signature Invalid" });
+  }
+};
+
+module.exports = { renderCheckoutPage, createOrder, cardDetail, verify };
