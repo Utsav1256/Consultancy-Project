@@ -44,10 +44,14 @@
 const User = require("../models/user");
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
+const paymentMailer = require("../mailers/payment_mailer");
+const { log } = require("console");
+
 const razorpayInstance = new Razorpay({
   key_id: "rzp_test_t5oFDruF5oObDd",
   key_secret: "hUKKobvCPfMAva91M4gEAETA",
 });
+
 const renderCheckoutPage = async function (req, res) {
   try {
     console.log("HIII");
@@ -122,7 +126,9 @@ const verify = (req, res) => {
 
   if (expectedSignature === req.body.razorpay_signature) {
     res.send({ code: 200, message: "Signature Valid" });
-    res.render()
+    const user = req.user;
+    console.log(user);
+    paymentMailer.newReceipt(user);
   } else {
     res.send({ code: 500, message: "Signature Invalid" });
   }

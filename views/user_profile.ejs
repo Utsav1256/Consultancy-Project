@@ -75,12 +75,34 @@
         </div>
         <div class="column">
           <div class="input-box">
+            <h2>WhatsApp No.</h2>
+            <input
+              type="tel"
+              name="whatsApp_number"
+              placeholder="Your Mobile No."
+              value="<%= profile_user.phone_number %>"
+              required
+            />
+          </div>
+          <div class="input-box">
             <h2>Country</h2>
             <input
               type="country"
               name="country"
               placeholder=""
               value="<%= profile_user.country %>"
+              required
+            />
+          </div>
+        </div>
+        <div class="column">
+          <div class="input-box">
+            <h2>City</h2>
+            <input
+              type="text"
+              name="city"
+              placeholder="Enter your city"
+              value="<%= profile_user.city %>"
               required
             />
           </div>
@@ -95,17 +117,6 @@
             />
           </div>
         </div>
-        <div class="input-box">
-          <h2>City</h2>
-          <input
-            type="text"
-            name="city"
-            placeholder="Enter your city"
-            value="<%= profile_user.city %>"
-            required
-          />
-        </div>
-
         <div class="submit">
           <input type="submit" value="Update" />
         </div>

@@ -28,6 +28,10 @@ const userSchema = new mongoose.Schema(
       type: Number,
       required: false,
     },
+    whatsApp_number: {
+      type: Number,
+      required: false,
+    },
     date_of_birth: {
       type: Date,
       required: false,

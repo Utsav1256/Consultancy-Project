@@ -9,7 +9,7 @@
     <form action="/payments/checkout/<%= profile_user._id %>" method="post">
       <div class="user-details">
         <p>User Name : <span><%= profile_user.name %></span></p>
-        <p>User Name : <span><%= profile_user.email %></span></p>
+        <p>User Email : <span><%= profile_user.email %></span></p>
       </div>
 
       <div class="service-info">
@@ -118,7 +118,7 @@
         currency: result.data.data.currency,
         name: "Gliadalista Consulting",
         description: "Test Transection",
-        image: "image.png ",
+        image: "/images/logo.png",
         order_id: result.data.data.id,
         handler: async function (response) {
           // const result = await GetOrderDetails.getPAymentOrderList(
