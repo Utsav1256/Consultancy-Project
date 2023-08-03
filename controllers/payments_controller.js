@@ -110,7 +110,8 @@ const cardDetail = async (req, res, next) => {
   }
 };
 
-const verify = (req, res) => {
+const verify = async (req, res) => {
+  console.log("req.user", req.user);
   console.log("req.body", req.body);
   console.log("req.body.razorpay_order_id", req.body.razorpay_order_id);
   console.log("req.body.razorpay_payment_id", req.body.razorpay_payment_id);
@@ -126,11 +127,71 @@ const verify = (req, res) => {
 
   if (expectedSignature === req.body.razorpay_signature) {
     res.send({ code: 200, message: "Signature Valid" });
+    // const user = req.user;
+    // console.log(user);
     const user = req.user;
-    console.log(user);
-    paymentMailer.newReceipt(user);
+    const payment_id = req.body.razorpay_payment_id;
+
+    try {
+      const paymentDetails = await fetchPaymentDetails(payment_id);
+      console.log("Payment Time:", paymentDetails.formattedDate);
+      console.log("Payment Method:", paymentDetails.method);
+      const payment_time = paymentDetails.formattedDate;
+      const payment_method = paymentDetails.method;
+      const payment_amount = paymentDetails.formattedAmount;
+
+      paymentMailer.newReceipt(
+        user,
+        payment_amount,
+        payment_id,
+        payment_time,
+        payment_method
+      );
+    } catch (err) {
+      console.log("Error fetching payment details:", err);
+    }
   } else {
     res.send({ code: 500, message: "Signature Invalid" });
+  }
+};
+
+const fetchPaymentDetails = async (paymentId) => {
+  try {
+    const payment = await razorpayInstance.payments.fetch(paymentId);
+    if (payment && payment.amount && payment.method && payment.created_at) {
+      const amount = payment.amount / 100;
+      const formattedAmount = amount.toLocaleString("en-IN", {
+        style: "currency",
+        currency: "INR",
+      });
+      console.log(formattedAmount);
+      const paymentTime = new Date(payment.created_at * 1000); // Convert UNIX timestamp to JavaScript Date object
+      // Convert the payment time string to a Date object
+      const date = new Date(paymentTime);
+      const method = payment.method;
+      // Options for formatting the date
+      const options = {
+        year: "numeric",
+        month: "short",
+        day: "2-digit",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        hour12: true,
+        timeZoneName: "short",
+      };
+
+      // Format the date using Intl.DateTimeFormat
+      const dateFormatter = new Intl.DateTimeFormat("en-US", options);
+      const formattedDate = dateFormatter.format(date);
+
+      console.log(formattedDate);
+      return { formattedAmount, formattedDate, method };
+    }
+    return null; // Payment details or payment time not found
+  } catch (err) {
+    console.log("Error fetching payment details:", err);
+    return null;
   }
 };
 

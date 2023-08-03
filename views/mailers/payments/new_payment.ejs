@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="/css/new_payment.css" />
+
+<div>
+  <h2>Payment Confirmation</h2>
+  <p>Dear <%= user.name %>,</p>
+  <p>
+    We hope this email finds you well. We are writing to confirm the successful
+    payment for your recent order with us.
+  </p>
+  <div class="order-details">
+    <h3>Order Details:</h3>
+    <p><strong>Payment Amount: </strong> <%= payment_amount %></p>
+    <p><strong>Payment Id: </strong> <%= payment_id %></p>
+    <p><strong>Payment Method: </strong> <%= payment_method %></p>
+    <p><strong>Paid on: </strong> <%= payment_time %></p>
+  </div>
+  <div>
+    <p><strong>Email:</strong><%= user.email %></p>
+    <p><strong>Mobile Number: </strong><%= user.phone_number %></p>
+    <p><strong>WhatsApp Number: </strong><%= user.phone_number %></p>
+  </div>
+  <p>
+    Your payment has been processed successfully, and your order is now
+    confirmed. We will proceed with the necessary arrangements to fulfill your
+    order and deliver it to your provided address.
+  </p>
+  <p>
+    If you have any questions or need further assistance regarding your order or
+    any other matter, please feel free to contact our customer support team at
+    gliadatistaconsultingllp@gmail.com or 1234567890.
+  </p>
+  <p>
+    Thank you for choosing our services. We look forward to serving you again in
+    the future.
+  </p>
+  <p class="footer">
+    Best regards,<br />Gliadatista Consulting<br />Customer Support Team
+  </p>
+</div>
