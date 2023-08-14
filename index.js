@@ -10,6 +10,7 @@ const db = require("./config/mongoose");
 const session = require("express-session");
 const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategy");
+const passportAdmin = require("./config/passport-admin-local-strategy");
 const MongoStore = require("connect-mongo");
 const passportGoogle = require("./config/passport-google-oauth2-strategy");
 const flash = require("connect-flash");
@@ -61,6 +62,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
+app.use(passport.setAuthenticatedAdmin);
 
 app.use(flash());
 app.use(customMiddleware.setFlash);

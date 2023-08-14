@@ -7,5 +7,6 @@ router.get("/", homeController.home);
 router.use("/users", require("./users"));
 router.use("/services", require("./services"));
 router.use("/payments", require("./payments"));
+router.use("/admin", require("./admin"));
 
 module.exports = router;
