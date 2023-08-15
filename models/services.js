@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const serviceSchema = new mongoose.Schema(
   {
-    name: {
+    title: {
       type: String,
       required: true,
     },
@@ -16,10 +16,6 @@ const serviceSchema = new mongoose.Schema(
     },
     price: {
       type: Number,
-      required: true,
-    },
-    image: {
-      type: String,
       required: true,
     },
     category: {

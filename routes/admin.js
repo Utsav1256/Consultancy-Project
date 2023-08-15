@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 console.log("Router loaded");
+router.use("/services", require("./services"));
 
 const adminController = require("../controllers/admin_controller");
 router.get("/sign-in", adminController.signIn);
