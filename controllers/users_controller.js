@@ -91,6 +91,19 @@ module.exports.register = async function (req, res) {
   }
 };
 
+module.exports.myCourse = async function (req, res) {
+  try {
+    const user = await User.findById(req.params.id);
+    return res.render("my_course", {
+      title: "My Course Page",
+      profile_user: user,
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send("Internal Server Error");
+  }
+};
+
 // Render the sign-in page
 module.exports.signIn = function (req, res) {
   if (req.isAuthenticated()) {

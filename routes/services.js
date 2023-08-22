@@ -10,6 +10,7 @@ const servicesController = require("../controllers/services_controller");
 
 const serviceController = require("../controllers/services_controller");
 router.get("/training", serviceController.training);
+router.get("/consultancy", serviceController.consultancy);
 
 // Route to render the "Add Service" page
 router.get(

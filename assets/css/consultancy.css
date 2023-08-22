@@ -1,29 +1,20 @@
-.training.container {
+.consultancy.container {
   margin-top: 80px;
   height: auto;
   background: #000000;
 }
+
 .points h3 {
   padding: 80px;
 }
 
-.points {
+.conbody {
   color: white;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(9, 1fr);
+  grid-template-rows: repeat(7, 1fr);
   width: 95%;
   margin: 30px;
-}
-
-.first {
-  grid-template-rows: repeat(8, 1fr);
-}
-
-.indi {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
 }
 
 .conbox {
@@ -61,21 +52,19 @@
   padding-left: 30px;
   transform: scale(100%);
   box-shadow: 50px white;
-  justify-self: center;
-  align-items: center;
 }
 
 img {
-  height: 500px;
-  width: 500px;
+  padding: 10px;
+  height: 400px;
+  width: 400px;
   grid-row-start: 1;
   grid-row-end: 3;
-  padding: 10px;
+  /* text-align: center; */
 }
 
 p {
   font-size: 100%;
-  color: orange;
 }
 
 .rightconbox {
@@ -115,13 +104,7 @@ p {
 }
 
 .choose {
-  justify-content: center;
-  align-self: start;
-  padding: 50px;
-}
-
-.here {
-  align-self: end;
+  justify-content: baseline;
 }
 
 @media only screen and (max-width: 1300px) {

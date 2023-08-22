@@ -1,5 +1,31 @@
-<div class="my_couse container">
-  <div class="header">
-    <h1>My Course</h1>
+<link rel="stylesheet" href="/css/myCourse.css" />
+
+<div class="myCourse container">
+  <div class="my_course">
+    <h1>My Courses</h1>
   </div>
+  <div class="pet">
+    <div class="course">
+      <h3 class="course1"></h3>
+      <div class="progress">
+        <div class="skill course1"></div>
+      </div>
+    </div>
+    <div class="course">
+      <h3 class="course2">Course 2</h3>
+      <div class="progress">
+        <div class="skill course2"></div>
+      </div>
+    </div>
+    <div class="course">
+      <h3 class="course3">Course 3</h3>
+      <div class="progress">
+        <div class="skill course3"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var name = "Course 1";
+    document.getElementsByClassName("course1")[0].innerHTML = name;
+  </script>
 </div>
