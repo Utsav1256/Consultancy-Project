@@ -67,7 +67,7 @@ passport.checkAdminAuthentication = function (req, res, next) {
   }
   console.log("checkAdminAuthentication");
   // If the admin is not signed in
-  return res.redirect("'/admin/sign-in'");
+  return res.redirect("/admin/sign-in");
 };
 
 passport.setAuthenticatedAdmin = function (req, res, next) {

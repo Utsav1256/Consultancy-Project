@@ -99,30 +99,13 @@
       <div class="select-box full">
         <select name="Service_selected" id="serviceSelectedField">
           <option hidden>Service want to avail</option>
-          <optgroup label="Consultancy">
-            <option value="Service1">Service 1</option>
-            <option value="Service2">Service 2</option>
-            <option value="Service3">Service 3</option>
-          </optgroup>
-          <optgroup label="Training">
-            <option value="Training1">Training 1</option>
-            <option value="Training2">Training 2</option>
-            <option value="Training3">Training 3</option>
-          </optgroup>
-          <optgroup label="Corporate Guide">
-            <option value="Guide1">Guide 1</option>
-            <option value="Guide2">Guide 2</option>
-            <option value="Guide3">Guide 3</option>
-          </optgroup>
-          <optgroup label="Guidance">
-            <option value="Guidance1">Guidance 1</option>
-            <option value="Guidance2">Guidance 2</option>
-            <option value="Guidance3">Guidance 3</option>
+          <optgroup label="Service Options" id="serviceOptions">
+            <!-- Service options will be populated here dynamically -->
           </optgroup>
         </select>
       </div>
       <div class="price input-box">
-        <input type="number" id="priceField" name="price" required />
+        <input type="number" id="priceField" name="price" required readonly />
       </div>
     </div>
     <div class="submit">
@@ -131,22 +114,68 @@
   </form>
 </section>
 <script>
+  let data = {};
+
+  document.addEventListener("DOMContentLoaded", async function () {
+    try {
+      const response = await fetch("/services/all");
+      data = await response.json();
+
+      if (data.services && data.services.length > 0) {
+        const serviceOptions = document.getElementById("serviceOptions");
+        data.services.forEach((service) => {
+          const option = document.createElement("option");
+          option.value = service.id_number;
+          option.textContent = service.title;
+          serviceOptions.appendChild(option);
+        });
+
+        const priceField = document.getElementById("priceField");
+        const serviceSelectedField = document.getElementById(
+          "serviceSelectedField"
+        );
+
+        serviceSelectedField.addEventListener("change", function () {
+          const selectedServiceId = serviceSelectedField.value;
+          const selectedService = data.services.find(
+            (service) => service.id_number == selectedServiceId
+          );
+
+          if (selectedService) {
+            priceField.value = selectedService.price;
+          }
+        });
+
+        // Trigger the change event once to set the initial price
+        serviceSelectedField.dispatchEvent(new Event("change"));
+      } else {
+        console.error("No services found in the response.");
+      }
+    } catch (error) {
+      console.error("Error fetching or parsing data:", error);
+    }
+  });
+
   document
     .getElementById("rzp-button1")
     .addEventListener("click", function (event) {
       event.preventDefault();
 
-      // Get the selected service and price values
-      const selectedService = document.getElementById(
+      const selectedServiceId = document.getElementById(
         "serviceSelectedField"
       ).value;
       const price = document.getElementById("priceField").value;
 
-      // Set the action URL of the form with the selected values
-      const form = document.getElementById("paymentForm");
-      form.action = `/payments/checkout/<%= user.id %>?service_selected=${selectedService}&price=${price}`;
+      const selectedService = data.services.find(
+        (service) => service.id_number == selectedServiceId
+      );
 
-      // Submit the form
-      form.submit();
+      if (selectedService && price == selectedService.price) {
+        const form = document.getElementById("paymentForm");
+        form.action = `/payments/checkout/<%= user.id %>?service_selected=${selectedService.title}&price=${price}`;
+        form.submit();
+      } else {
+        alert("Invalid Input!");
+      }
     });
 </script>

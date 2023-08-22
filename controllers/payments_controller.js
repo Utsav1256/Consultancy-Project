@@ -150,6 +150,16 @@ const verify = async (req, res) => {
     } catch (err) {
       console.log("Error fetching payment details:", err);
     }
+    // Logout the user
+    req.logout(function (err) {
+      if (err) {
+        return next(err);
+      }
+
+      req.flash("success", "Please login again, to acess the course");
+
+      return res.redirect("/");
+    });
   } else {
     res.send({ code: 500, message: "Signature Invalid" });
   }

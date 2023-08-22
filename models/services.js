@@ -6,6 +6,10 @@ const serviceSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    id_number: {
+      type: Number,
+      required: true,
+    },
     description: {
       type: String,
       required: true,
@@ -16,11 +20,6 @@ const serviceSchema = new mongoose.Schema(
     },
     price: {
       type: Number,
-      required: true,
-    },
-    category: {
-      type: String,
-      enum: ["Programming", "Design", "Marketing", "Other"],
       required: true,
     },
   },
