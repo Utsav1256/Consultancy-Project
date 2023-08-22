@@ -74,12 +74,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.content a {
-  display: flex;
-  text-decoration: none;
-  color: #fff;
-  width: calc(26% - 20px);
-}
+
 .card {
   padding: 50px 25px;
   width: calc(26% - 20px);
@@ -94,6 +89,15 @@
   /* flex: wrap; */
   box-shadow: 0px 10px 20px rgba(211, 210, 210, 0.2);
   text-align: center;
+}
+.card a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.box button {
+  width: 4rem;
+  height: 2rem;
 }
 
 .content .card:hover {
@@ -123,8 +127,8 @@
   /* display: flex;
   justify-content: space-between; */
 }
-button,
-button a {
+.btn button,
+.btn button a {
   height: 55px;
   width: 80%;
   text-align: center;
@@ -139,8 +143,8 @@ button a {
   color: #000000;
   letter-spacing: 2px;
 }
-button:hover,
-button:hover a {
+.btn button:hover,
+.btn button:hover a {
   font-size: 1.2rem;
   font-weight: bold;
   color: aqua;
