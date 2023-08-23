@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Edu+SA+Beginner&display=swap");
+
+.about.container {
+  color: rgb(183, 87, 242);
+  background-color: rgb(10, 10, 10);
+  background-repeat: no-repeat;
+  font-family: "Edu SA Beginner", cursive;
+  font-size: 15px;
+  overflow-x: hidden;
+}
+
+.matha {
+  margin: 50px 500px;
+  padding: 100px;
+  align-self: start;
+  border-radius: 30px;
+  box-shadow: 1px 1px 50px 5px rgb(114, 121, 135);
+  text-align: center;
+  background-color: rgba(100, 100, 100, 0.25);
+}
+
+.matha img {
+  justify-self: center;
+  border-radius: 20px;
+  height: 30vh;
+  box-shadow: 1px 1px 30px 5px rgb(140, 204, 92);
+  margin-bottom: 50px;
+}
+
+.bod {
+  margin: 0 100px;
+  display: grid;
+  padding: 0 40px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(7, 1fr);
+}
+
+.mission {
+  text-align: center;
+  border-radius: 30px;
+  margin: 50px;
+  padding: 10px;
+  width: 90%;
+  justify-self: center;
+  align-self: center;
+  justify-content: space-around;
+  background-color: rgba(100, 100, 100, 0.25);
+  box-shadow: 1px 1px 50px 5px rgb(114, 121, 135);
+}
+
+img {
+  justify-self: center;
+  align-self: center;
+}
+
+.mission p {
+  font-size: 2vw;
+  padding: 40px;
+  align-self: center;
+}
+
+.ab {
+  text-align: center;
+  border-radius: 30px;
+  margin: 50px;
+  padding: 10px;
+  width: 90%;
+  justify-self: center;
+  align-self: center;
+  background-color: rgba(100, 100, 100, 0.25);
+  box-shadow: 1px 1px 50px 5px rgb(114, 121, 135);
+}
+
+.ab p {
+  font-size: 30px;
+  padding: 40px;
+  align-self: center;
+}
+
+.services {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.box li {
+  text-align: left;
+}
+
+.box {
+  align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px 0;
+}
+
+.box li {
+  font-size: 25px;
+}
+
+.choose {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.choose {
+  font-size: 25px;
+  padding: 50px 90px;
+}
+
+.inclue {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: rgb(10, 10, 10);
+  box-shadow: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .matha {
+    margin: 50px 50px;
+  }
+
+  .bod {
+    display: inline;
+  }
+}

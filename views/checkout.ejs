@@ -6,7 +6,7 @@
   <section class="checkout container">
     <h1>Checkout</h1>
 
-    <form action="/payments/checkout/<%= profile_user._id %>" method="post">
+    <form method="post">
       <div class="user-details">
         <p>User Name : <span><%= profile_user.name %></span></p>
         <p>User Email : <span><%= profile_user.email %></span></p>
@@ -31,49 +31,6 @@
 </div>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
-  // import axios from "axios";
-  // const axios = require("axios");
-  // var options = {
-  //   key: "rzp_test_t5oFDruF5oObDd", // Enter the Key ID generated from the Dashboard
-  //   amount: "300", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-  //   currency: "INR",
-  //   name: "Acme Corp",
-  //   description: "Test Transaction",
-  //   image: "https://example.com/your_logo",
-  //   order_id: "order_MGy3ovF4mg2FP6", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-  //   handler: function (response) {
-  //     alert(response.razorpay_payment_id);
-  //     alert(response.razorpay_order_id);
-  //     alert(response.razorpay_signature);
-  //   },
-  //   prefill: {
-  //     name: "Gaurav Kumar",
-  //     email: "gaurav.kumar@example.com",
-  //     contact: "9000090000",
-  //   },
-  //   notes: {
-  //     address: "Razorpay Corporate Office",
-  //   },
-  //   theme: {
-  //     color: "#3399cc",
-  //   },
-  // };
-  // var rzp1 = new Razorpay(options);
-  // rzp1.on("payment.failed", function (response) {
-  //   alert(response.error.code);
-  //   alert(response.error.description);
-  //   alert(response.error.source);
-  //   alert(response.error.step);
-  //   alert(response.error.reason);
-  //   alert(response.error.metadata.order_id);
-  //   alert(response.error.metadata.payment_id);
-  // });
-  // document.getElementById("rzp-button1").onclick = function (e) {
-  //   e.preventDefault();
-  //   rzp1.open();
-  //   handleClick();
-  // };
-
   async function handleClick() {
     // Check if the checkbox is checked
     const termsCheckbox = document.getElementById("terms");
@@ -130,20 +87,8 @@
             "http://localhost:8001/payments/verify",
             response
           );
-          console.log("--result-->", result);
-          console.log("--result-->", result2);
-          // if (result) {
-          //   const finalList = {
-          //     orderId: orderId,
-          //     payment: result.data.method,
-          //     addressId: newCart.shippingPrice,
-          //     total: result.data.amount / 100,
-          //     cart: newCart.cart,
-          //     status: result.data.status,
-          //     razorpay_pament_id: response.razorpay_payment_id,
-          //     razorpay_order_id: response.razorpay_order_id,
-          //   };
-          // }
+          // console.log("--result-->", result);
+          // console.log("--result-->", result2);
         },
 
         prefill: {
@@ -160,6 +105,21 @@
       };
       var rzp1 = new Razorpay(options);
       rzp1.open();
+
+      rzp1.on("payment.success", async function (response) {
+        try {
+          // Call the verification API here and check if the payment was successful
+
+          // Payment verification was successful
+          alert("Payment Successful!"); // Show a success message
+
+          // Redirect to the sign-in page
+          window.location.href = "http://localhost:8001/users/sign-in"; // Update with your sign-in page URL
+        } catch (error) {
+          console.error("Error verifying payment:", error);
+          alert("Payment Verification Failed.");
+        }
+      });
 
       rzp1.on("payment.failed", function (response) {
         // alert(response.error.code);

@@ -39,8 +39,11 @@
 }
 .column {
   display: flex;
-  column-gap: 16px;
+  column-gap: 26px;
+  align-items: center;
+  justify-content: center;
 }
+
 .gender-box {
   margin-top: 20px;
 }

@@ -33,6 +33,7 @@ module.exports.update = async function (req, res) {
         user.date_of_birth = req.body.date_of_birth;
         user.gender = req.body.gender;
         user.phone_number = req.body.phone_number;
+        user.whatsApp_number = req.body.whatsApp_number;
         user.country = req.body.country;
         user.postal_code = req.body.postal_code;
         user.city = req.body.city;

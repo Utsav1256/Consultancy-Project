@@ -1,46 +1,3 @@
-// const Razorpay = require("razorpay");
-
-// const razorpayInstance = new Razorpay({
-//   key_id: "rzp_test_t5oFDruF5oObDd",
-//   key_secret: "hUKKobvCPfMAva91M4gEAETA",
-// });
-
-// const createOrder = async (req, res, next) => {
-//   try {
-//     const amount = req.body.amount * 100;
-//     const options = {
-//       amount: 2000,
-//       currency: "INR",
-//       receipt: "razorUser@gmail.com",
-//     };
-
-//     razorpayInstance.orders.create(options, (err, order) => {
-//       if (!err) {
-//         res.status(200).send({
-//           success: true,
-//           msg: "Order Created",
-//           order_id: order.id,
-//           amount: amount,
-//           key_id: RAZORPAY_ID_KEY,
-//           product_name: req.body.name,
-//           description: req.body.description,
-//           contact: "8567345632",
-//           name: "Uk",
-//           email: "uk@gmail.com",
-//         });
-//       } else {
-//         res.status(400).send({ success: false, msg: "Something went wrong!" });
-//       }
-//     });
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// };
-
-// module.exports = {
-//   // renderProductPage,
-//   createOrder,
-// };
 const User = require("../models/user");
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
@@ -54,7 +11,6 @@ const razorpayInstance = new Razorpay({
 
 const renderCheckoutPage = async function (req, res) {
   try {
-    console.log("HIII");
     const user = await User.findById(req.params.id);
     const selectedService = req.query.service_selected;
     const price = req.query.price;
@@ -111,31 +67,25 @@ const cardDetail = async (req, res, next) => {
 };
 
 const verify = async (req, res) => {
-  console.log("req.user", req.user);
-  console.log("req.body", req.body);
-  console.log("req.body.razorpay_order_id", req.body.razorpay_order_id);
-  console.log("req.body.razorpay_payment_id", req.body.razorpay_payment_id);
-  console.log("expectedSignature :", expectedSignature);
-  console.log("req.body.razorpay_signature", req.body.razorpay_signature);
-
   let body = req.body.razorpay_order_id + "|" + req.body.razorpay_payment_id;
   var expectedSignature = crypto
     .createHmac("sha256", razorpayInstance.key_secret)
     .update(body.toString())
     .digest("hex");
-  console.log("expectedSignature :", expectedSignature);
-
   if (expectedSignature === req.body.razorpay_signature) {
-    res.send({ code: 200, message: "Signature Valid" });
+    // res.send({ code: 200, message: "Signature Valid" });
     // const user = req.user;
-    // console.log(user);
+    console.log("Signature Virified");
+    res.redirect(`http://localhost:8001/payments/success`);
+    console.log("Signature Virified fhfhf");
+
     const user = req.user;
     const payment_id = req.body.razorpay_payment_id;
 
     try {
       const paymentDetails = await fetchPaymentDetails(payment_id);
-      console.log("Payment Time:", paymentDetails.formattedDate);
-      console.log("Payment Method:", paymentDetails.method);
+      // console.log("Payment Time:", paymentDetails.formattedDate);
+      // console.log("Payment Method:", paymentDetails.method);
       const payment_time = paymentDetails.formattedDate;
       const payment_method = paymentDetails.method;
       const payment_amount = paymentDetails.formattedAmount;
@@ -150,19 +100,17 @@ const verify = async (req, res) => {
     } catch (err) {
       console.log("Error fetching payment details:", err);
     }
-    // Logout the user
-    req.logout(function (err) {
-      if (err) {
-        return next(err);
-      }
-
-      req.flash("success", "Please login again, to acess the course");
-
-      return res.redirect("/");
-    });
   } else {
     res.send({ code: 500, message: "Signature Invalid" });
   }
+};
+
+const success = (req, res) => {
+  // req.logout();
+
+  return res.render("payment_success", {
+    title: "payment_success",
+  });
 };
 
 const fetchPaymentDetails = async (paymentId) => {
@@ -174,7 +122,6 @@ const fetchPaymentDetails = async (paymentId) => {
         style: "currency",
         currency: "INR",
       });
-      console.log(formattedAmount);
       const paymentTime = new Date(payment.created_at * 1000); // Convert UNIX timestamp to JavaScript Date object
       // Convert the payment time string to a Date object
       const date = new Date(paymentTime);
@@ -205,4 +152,10 @@ const fetchPaymentDetails = async (paymentId) => {
   }
 };
 
-module.exports = { renderCheckoutPage, createOrder, cardDetail, verify };
+module.exports = {
+  renderCheckoutPage,
+  createOrder,
+  cardDetail,
+  verify,
+  success,
+};

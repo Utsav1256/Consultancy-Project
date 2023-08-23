@@ -16,16 +16,28 @@
         required
       />
     </div>
-    <div class="input-box">
-      <label for="email">Email</label>
-      <input
-        type="email"
-        name="email"
-        id="email"
-        placeholder="Enter your email"
-        value="<%= profile_user.email %>"
-        required
-      />
+    <div class="column">
+      <div class="input-box">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Enter your email"
+          value="<%= profile_user.email %>"
+          required
+        />
+      </div>
+      <div class="input-box">
+        <label for="date_of_birth">Date Of Birth</label>
+        <input
+          type="date"
+          name="date_of_birth"
+          id="date_of_birth"
+          value="<%= profile_user.date_of_birth ? profile_user.date_of_birth.toISOString().split('T')[0] : '' %>"
+          required
+        />
+      </div>
     </div>
     <div class="column">
       <div class="input-box">
@@ -40,12 +52,13 @@
         />
       </div>
       <div class="input-box">
-        <label for="date_of_birth">Date Of Birth</label>
+        <label for="whatsApp_number">WhatsApp Number</label>
         <input
-          type="date"
-          name="date_of_birth"
+          type="tel"
+          name="whatsApp_number"
           id="date_of_birth"
-          value="<%= profile_user.date_of_birth ? profile_user.date_of_birth.toISOString().split('T')[0] : '' %>"
+          placeholder="Enter your phone number"
+          value="<%= profile_user.whatsApp_number %>"
           required
         />
       </div>
@@ -105,7 +118,13 @@
         </select>
       </div>
       <div class="price input-box">
-        <input type="number" id="priceField" name="price" required readonly />
+        <input
+          type="number"
+          id="priceField"
+          name="price"
+          placeholder="Price"
+          readonly
+        />
       </div>
     </div>
     <div class="submit">
