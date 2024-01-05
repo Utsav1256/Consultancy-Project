@@ -1,4 +1,5 @@
 const express = require("express");
+const env = require("./config/environment");
 const app = express();
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
@@ -24,7 +25,7 @@ app.use(bodyParser.json());
 // Parse incoming requests with URL-encoded payloads
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static("./assets"));
+app.use(express.static(env.asset_path));
 // make the uploads path available to the browser
 app.use("/uploads", express.static(__dirname + "/uploads"));
 app.use(expressLayouts);
@@ -38,7 +39,7 @@ app.use(
   session({
     name: "Consultancy",
     //ToDo change the secret before deployment in production mode
-    secret: "blahsomething",
+    secret: env.session_cookie_key,
     saveUninitialized: false,
     resave: false,
     cookie: {
