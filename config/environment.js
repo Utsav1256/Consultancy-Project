@@ -1,7 +1,10 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 const development = {
   name: "development",
   asset_path: "./assets",
-  session_cookie_key: "blahsomething",
+  session_cookie_key: process.env.SESSION_COOKIE_KEY,
   db: "consultancy_development",
   smtp: {
     service: "gmail",
@@ -9,14 +12,13 @@ const development = {
     port: 587,
     secure: false,
     auth: {
-      user: "coder.utsav64@gmail.com",
-      pass: "lclpwohlzxiqfdpk",
+      user: process.env.AUTH_USERNAME,
+      pass: process.env.AUTH_PASSWORD,
     },
   },
-  google_client_id:
-    "986617047700-5f6lijv8bopu73str7phecsuua3avvc3.apps.googleusercontent.com",
-  google_client_secret: "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",
-  google_call_back_url: "http://localhost:8001/users/auth/google/callback",
+  google_client_id: process.env.GOOGLE_CLIENT_ID,
+  google_client_secret: process.env.GOOGLE_CLIENT_SECRET,
+  google_call_back_url: process.env.GOOGLE_CALLBACK_URL,
 };
 const production = {
   name: "production",
