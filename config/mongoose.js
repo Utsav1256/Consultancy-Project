@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
-const env = require("./environment");
-mongoose.connect(`mongodb://127.0.0.1/${env.db}`);
+const {MONGOOSE_CONNECT_URI} = require("./serverConfig")
+
+mongoose.connect(MONGOOSE_CONNECT_URI);
 
 const db = mongoose.connection;
 

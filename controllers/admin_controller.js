@@ -1,9 +1,11 @@
 const Admin = require("../models/admin");
+const {ADMIN_EMAIL, ADMIN_PASSWORD} = require("../config/serverConfig")
+
 
 // Create a new admin account
 const newAdminData = new Admin({
-  email: "admin@example.com",
-  password: "admin123",
+  email: ADMIN_EMAIL,
+  password: ADMIN_PASSWORD,
 });
 
 // Check if the admin already exists in the database
@@ -27,7 +29,7 @@ Admin.findOne({ email: newAdminData.email }).then((existingAdmin) => {
 // Render the dashboard page
 module.exports.dashboard = async function (req, res) {
   try {
-    console.log(req.params);
+    // console.log(req.params);
     const admin = await Admin.findById(req.params.id);
     if (!admin) {
       return res.status(404).send("Admin not found");

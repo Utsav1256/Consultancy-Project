@@ -1,0 +1,22 @@
+const dotenv = require("dotenv");
+
+dotenv.config();
+
+module.exports = {
+  PORT: process.env.PORT,
+  SESSION_NAME: process.env.SESSION_NAME,
+  SESSION_SECRET_KEY: process.env.SESSION_SECRET_KEY,
+  MONGOOSE_CONNECT_URI: process.env.MONGOOSE_CONNECT_URI,
+  AUTH_USERNAME: process.env.AUTH_USERNAME,
+  AUTH_PASSWORD: process.env.AUTH_PASSWORD,
+  GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+  GOOGLE_CALLBACK_URL: process.env.GOOGLE_CALLBACK_URL,
+  RAZORPAY_KEY_ID: process.env.RAZORPAY_KEY_ID,
+  RAZORPAY_KEY_SECRET: process.env.RAZORPAY_KEY_SECRET,
+  PAYMENT_SUCCESS_REDIRECT_URI: process.env.PAYMENT_SUCCESS_REDIRECT_URI,
+  ADMIN_EMAIL: process.env.ADMIN_EMAIL,
+  ADMIN_PASSWORD: process.env.ADMIN_PASSWORD,
+  
+  
+};

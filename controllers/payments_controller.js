@@ -3,10 +3,11 @@ const Razorpay = require("razorpay");
 const crypto = require("crypto");
 const paymentMailer = require("../mailers/payment_mailer");
 const { log } = require("console");
+const {RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET, PAYMENT_SUCCESS_REDIRECT_URI} = require("../config/serverConfig")
 
 const razorpayInstance = new Razorpay({
-  key_id: "rzp_test_t5oFDruF5oObDd",
-  key_secret: "hUKKobvCPfMAva91M4gEAETA",
+  key_id: RAZORPAY_KEY_ID,
+  key_secret: RAZORPAY_KEY_SECRET,
 });
 
 const renderCheckoutPage = async function (req, res) {
@@ -52,8 +53,8 @@ const createOrder = async (req, res, next) => {
 const cardDetail = async (req, res, next) => {
   try {
     const razorpayInstance = new Razorpay({
-      key_id: "rzp_test_t5oFDruF5oObDd",
-      key_secret: "hUKKobvCPfMAva91M4gEAETA",
+      key_id: RAZORPAY_KEY_ID,
+      key_secret: RAZORPAY_KEY_SECRET,
     });
 
     const { payment_id } = req.body;
@@ -76,8 +77,8 @@ const verify = async (req, res) => {
     // res.send({ code: 200, message: "Signature Valid" });
     // const user = req.user;
     console.log("Signature Virified");
-    res.redirect(`http://localhost:8001/payments/success`);
-    console.log("Signature Virified fhfhf");
+    res.redirect(PAYMENT_SUCCESS_REDIRECT_URI);
+    // console.log("Signature Virified fhfhf");
 
     const user = req.user;
     const payment_id = req.body.razorpay_payment_id;
